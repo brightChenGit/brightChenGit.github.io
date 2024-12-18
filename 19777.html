@@ -1,0 +1,470 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><script>((function() {var callbacks = [],timeLimit = 50,open = false;setInterval(loop, 1);return {addListener: function(fn) {callbacks.push(fn);},cancleListenr: function(fn) {callbacks = callbacks.filter(function(v) {return v !== fn;});}}
+function loop() {var startTime = new Date();debugger;if (new Date() - startTime > timeLimit) {if (!open) {callbacks.forEach(function(fn) {fn.call(null);});}open = true;window.stop();alert('你真坏，请关闭控制台！');document.body.innerHTML = "";} else {open = false;}}})()).addListener(function() {window.location.reload();});</script><script>function toDevtools(){
+  let num = 0;
+  let devtools = new Date();
+  devtools.toString = function() {
+    num++;
+    if (num > 1) {
+        alert('你真坏，请关闭控制台！')
+        window.location.href = "about:blank"
+        blast();
+    }
+  }
+  console.log('', devtools);
+}
+toDevtools();</script><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>支付宝自动续费设计 | Bright Chen</title><meta name="author" content="bright chen"><meta name="copyright" content="bright chen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="支付宝自动续费设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="支付宝自动续费设计">
+<meta property="og:url" content="https://www.brightchen.top/19777.html">
+<meta property="og:site_name" content="Bright Chen">
+<meta property="og:description" content="支付宝自动续费设计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/brightChenGit/picgo/main/2024/avatar.jpg">
+<meta property="article:published_time" content="2024-11-26T10:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-17T04:58:30.911Z">
+<meta property="article:author" content="bright chen">
+<meta property="article:tag" content="自动续费">
+<meta property="article:tag" content="支付宝">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/brightChenGit/picgo/main/2024/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png?v1"><link rel="canonical" href="https://www.brightchen.top/19777.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":10,"languages":{"author":"作者: bright chen","link":"链接: ","source":"来源: Bright Chen","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '支付宝自动续费设计',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/myself.css"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Bright Chen" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #efefef;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://raw.githubusercontent.com/brightChenGit/picgo/main/2024/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Bright Chen</span></a><a class="nav-page-title" href="/"><span class="site-name">支付宝自动续费设计</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div><div id="nav-right"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">支付宝自动续费设计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-26T10:00:00.000Z" title="发表于 2024-11-26 18:00:00">2024-11-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-17T04:58:30.911Z" title="更新于 2024-12-17 12:58:30">2024-12-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/">支付宝</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="一-参考文档："><a href="#一-参考文档：" class="headerlink" title="一. 参考文档："></a>一. 参考文档：</h2><p><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/repo-0243dw">支付宝自动续费参考地址</a></p>
+<h2 id="二-流程设计"><a href="#二-流程设计" class="headerlink" title="二. 流程设计"></a>二. 流程设计</h2><h3 id="1-自动续费时序图"><a href="#1-自动续费时序图" class="headerlink" title="1. 自动续费时序图"></a>1. 自动续费时序图</h3><pre class="mermaid">sequenceDiagram
+   participant 用户
+   participant 小程序
+   participant 后端服务
+   participant 支付宝
+   用户->>小程序:1.请求续约
+   小程序->>后端服务:2.请求签约接口
+   后端服务->>支付宝:3.支付宝个人协议页面签约接口
+   支付宝->>后端服务:4.返回签约参数
+   后端服务->>小程序:5.返回签约参数
+   小程序->>用户:6.弹出签约跳转
+   用户->>支付宝:7.签约
+   支付宝->>后端服务:8.签约/解约通知
+   用户->>小程序:9.解除签约
+   小程序->>后端服务:10.解除签约
+   后端服务->>支付宝:11.解约接口
+   支付宝->>后端服务:12.签约/解约通知
+   后端服务->>支付宝:13.定时规则任务触发:周期扣款
+   支付宝->>后端服务:14.扣款回调
+   后端服务->>支付宝:15.退款
+   后端服务->>支付宝:16.(主动)查询退款
+   后端服务->>支付宝:17.查询扣款订单异常进行撤销接口（12小时）</pre>
+<hr>
+<h3 id="2-接口相关"><a href="#2-接口相关" class="headerlink" title="2. 接口相关"></a>2. 接口相关</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/8bccfa0b_alipay.user.agreement.page.sign">alipay.user.agreement.page.sign（支付宝个 人协议页面签约接口）</a></li>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/support/01rg2a">签约&#x2F;解约通知(周期&#x2F;商家扣款如何设置异步通知)</a></li>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/b841da1f_alipay.user.agreement.unsign?scene=common&pathHash=6d2d4910">解约接口</a></li>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/38d751b1_alipay.trade.pay?scene=b4d9c9906e14451b99c8de390ae20fea&pathHash=0a98c4e0">签约扣款接口</a></li>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/de34d4fa_alipay.trade.refund?scene=common&pathHash=46ea3fea">签约退款接口</a></li>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/support/01rg2a">扣款回调&#x2F;通知</a> ,<a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/38d751b1_alipay.trade.pay?scene=b4d9c9906e14451b99c8de390ae20fea&pathHash=0a98c4e0#%E8%A7%A6%E5%8F%91%E9%80%9A%E7%9F%A5%E7%B1%BB%E5%9E%8B">触发通知示例</a></li>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/02ekft">查询退款</a></li>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/83a5f6d3_alipay.trade.cancel?scene=common&pathHash=f27672eb">撤销接口</a></li>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/07005f5c_alipay.trade.query?scene=common&pathHash=aa8ed91c">查询扣款接口</a></li>
+</ol>
+<p>&#x3D;&#x3D;备注：需要注意扣款订单和退款订单的订单号规则，防止与内部系统其他类型订单冲突&#x3D;&#x3D;</p>
+<h2 id="三-注意事项"><a href="#三-注意事项" class="headerlink" title="三. 注意事项"></a>三. 注意事项</h2><h3 id="1-产品特色"><a href="#1-产品特色" class="headerlink" title="1. 产品特色"></a>1. 产品特色</h3><p><strong>商家扣款</strong> 是商家引导用户进行签约授权，签约成功后商家根据签约协议号，再主动调接口完成扣款的支付产品，支持周期性的扣款模式。</p>
+<p>商家选择接入<strong>商家扣款</strong> 产品，可同时选择接入 <strong>商家分账</strong> 产品，具体查看 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/repo-0038ln?ref=api">商家分账产品介绍</a>。</p>
+<p>目前 <strong>商家扣款</strong> 一个用户在同商家同场景码下&#x3D;&#x3D;最多可以签约 1 次&#x3D;&#x3D;，可以设置多个模版，每个模版对应一个场景码；到&#x3D;&#x3D;扣款日 execute_time 的前 5 天&#x3D;&#x3D;商家可以根据用户签约协议号完成扣款；单个商家对单个协议的扣款限额为&#x3D;&#x3D;单笔限额 100 元。&#x3D;&#x3D;</p>
+<ul>
+<li>产品业务特征：固定周期、固定金额范围、被动扣款等。</li>
+<li>产品典型场景：会员包月、租赁费用、定期还款、充值缴费等。</li>
+</ul>
+<p>目前允许商家在约定日期之前 5 天开始扣款，如扣款时间 2019-11-06，可从 11-01 到 11-06 调用扣款接口。</p>
+<h3 id="2-注意"><a href="#2-注意" class="headerlink" title="2. 注意"></a>2. 注意</h3><p>为保障用户体验，扣费操作不可在晚上执行，请于&#x3D;&#x3D;北京时间 <strong>7:00～22:00</strong> 期间发起扣款。&#x3D;&#x3D;</p>
+<h3 id="3-签约规则参数"><a href="#3-签约规则参数" class="headerlink" title="3.  签约规则参数"></a>3.  签约规则参数</h3><p>为实现周期性业务逻辑，商家发起签约请求主要遵循以下参数规则。</p>
+<p>&#x3D;&#x3D;涉及接口 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/8bccfa0b_alipay.user.agreement.page.sign">alipay.user.agreement.page.sign（支付宝个人协议页面签约接口）</a>、<a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/e65d4f60_alipay.trade.app.pay?pathHash=125bc1aa">alipay.trade.app.pay（app支付接口2.0）</a> 等。&#x3D;&#x3D;</p>
+<table>
+<thead>
+<tr>
+<th><strong>规则主要控制逻辑</strong></th>
+<th><strong>涉及参数</strong></th>
+<th><strong>必填</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单次扣款最大金额</td>
+<td>single_amount</td>
+<td>是</td>
+<td>每次发起扣款时限制的最大金额，单位为元。商家每次发起扣款都不允许大于此金额。</td>
+</tr>
+<tr>
+<td>周期类型</td>
+<td>period_type</td>
+<td>是</td>
+<td>枚举值为 DAY 和 MONTH。<br><br>DAY 即扣款周期按天计，MONTH 代表扣款周期按自然月。</td>
+</tr>
+<tr>
+<td>周期间隔时间</td>
+<td>period,period_type</td>
+<td>是</td>
+<td>与另一参数 period_type 组合使用确定扣款周期，例如 period_type 为 DAY，period&#x3D;90，则扣款周期为90 天。</td>
+</tr>
+<tr>
+<td>首次扣款时间</td>
+<td>execute_time</td>
+<td>是</td>
+<td>商家发起首次扣款的时间。精确到日，格式为 yyyy-MM-dd。<br><br>结合其它必填的扣款周期参数，会确定商家以后的扣款计划。发起扣款的时间需符合这里的扣款计划。</td>
+</tr>
+<tr>
+<td>周期总金额</td>
+<td>total_amount</td>
+<td>否</td>
+<td>单位为元。如果传入此参数，商家多次扣款的累计金额不允许超过此金额。</td>
+</tr>
+<tr>
+<td>周期总期数</td>
+<td>total_payments</td>
+<td>否</td>
+<td>如果传入此参数，则商家成功扣款的次数不能超过此次数限制（扣款失败不计入）。</td>
+</tr>
+</tbody></table>
+<p><img src="https://i-blog.csdnimg.cn/direct/953290645afd4e97a9c5c2e0d48f2794.png" alt="![[attachment/Pasted image 20241101102625.png]]"></p>
+<h3 id="4-扣款（-原退款接口-）"><a href="#4-扣款（-原退款接口-）" class="headerlink" title="4. 扣款（ (原退款接口)）"></a>4. 扣款（ (原退款接口)）</h3><p>为实现周期性业务逻辑，商家发起扣款请求主要遵循以下参数规则。</p>
+<p>&#x3D;&#x3D;涉及接口 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/38d751b1_alipay.trade.pay?scene=32&pathHash=0a222003">alipay.trade.pay(统一收单交易支付接口)</a> 等。&#x3D;&#x3D;</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>扣款主要控制逻辑</strong></td>
+<td><strong>描述</strong></td>
+</tr>
+<tr>
+<td>扣款金额</td>
+<td>后续每期扣款金额必须小于等于签约约定金额。</td>
+</tr>
+<tr>
+<td>扣款时间</td>
+<td>&#x3D;&#x3D;扣款必须在约定时间及约定时间前 5天内发起，如果周期间隔时间为自然月，扣款时间只能在（1-28 号）。&#x3D;&#x3D;</td>
+</tr>
+<tr>
+<td>扣款时间间隔</td>
+<td>周期内只能有一次扣款，上期未扣款不会叠加到下期；当期内若用户错过扣款日期可以调用 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/ed428330_alipay.user.agreement.executionplan.modify?scene=common&pathHash=13c30e39">alipay.user.agreement.executionplan.modify</a> （周期性扣款协议执行计划修改接口）延后扣款时间。</td>
+</tr>
+<tr>
+<td>撤销及退款逻辑</td>
+<td>交易撤销后，当期内还可以发起一次扣款，交易退款则不允许再次发起扣款。</td>
+</tr>
+<tr>
+<td>周期总金额和总期数</td>
+<td>如果签约时传入该信息，则扣款时会校验总扣款金额和期数是否满足条件。</td>
+</tr>
+<tr>
+<td>下次扣款时间</td>
+<td>下次扣款时间可以修改，只能往后延期。如果扣款周期类型为天，则无限制；如果扣款周期为自然月，只能延期到（1-28 号）。</td>
+</tr>
+</tbody></table>
+<h3 id="5-费率"><a href="#5-费率" class="headerlink" title="5. 费率"></a>5. 费率</h3><p>具体以开通产品时的约定为准，常规计费模式如下</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>服务名称</strong></th>
+<th align="center"><strong>费率</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">单笔费率</td>
+<td align="center">0.6%～1%</td>
+</tr>
+</tbody></table>
+<h3 id="6-退款-原退款接口"><a href="#6-退款-原退款接口" class="headerlink" title="6.退款 (原退款接口)"></a>6.退款 (原退款接口)</h3><p>退款周期：12 个月，即交易发生后 12 个月内可发起退款，&#x3D;&#x3D;超过12 个月则不可发起退款&#x3D;&#x3D;。</p>
+<p>退款方式：资金原路返回用户账户。</p>
+<p>退款退费：退款时手续费会一并退还。</p>
+<h3 id="7-签约解约返回"><a href="#7-签约解约返回" class="headerlink" title="7.签约解约返回"></a>7.签约解约返回</h3><h4 id="7-1-区分支付返回异步和签约返回异步"><a href="#7-1-区分支付返回异步和签约返回异步" class="headerlink" title="7.1  区分支付返回异步和签约返回异步"></a>7.1  区分支付返回异步和签约返回异步</h4><p>支付接口返回的异步参数和签约返回的异步参数是不一样的。</p>
+<ul>
+<li>支付返回异步含有 out_trade_no、trade_no。</li>
+<li>签约返回异步含有 external_agreement_no、agreement_no。</li>
+</ul>
+<p><strong>注意：</strong>请求时设置 external_agreement_no，异步必传。</p>
+<h4 id="7-2-区分签约返回异步和解约返回异步"><a href="#7-2-区分签约返回异步和解约返回异步" class="headerlink" title="7.2 区分签约返回异步和解约返回异步"></a>7.2 区分签约返回异步和解约返回异步</h4><p>签约返回异步和解约返回异步可以根据 status 判断</p>
+<ul>
+<li>签约返回异步含有status&#x3D;NORMAL，notify_type&#x3D;dut_user_sign。</li>
+<li>解约返回异步含有status&#x3D;UNSIGN，notify_type&#x3D;dut_user_unsign。</li>
+</ul>
+<h2 id="四-表设计"><a href="#四-表设计" class="headerlink" title="四.表设计"></a>四.表设计</h2><h3 id="1-说明"><a href="#1-说明" class="headerlink" title="1. 说明"></a>1. 说明</h3><pre><code>签约： signing of contract；make a contract
+扣款订单号：30位=前缀缩写 mac（3位）+运营商编号（9位）+时间戳（13）+5位随机数
+退款订单号：30位=前缀缩写 rmac（4位）+运营商编号（9位）+时间戳（13）+4位随机数
+签约号：uuid
+
+
+超级会员购买表：xxx_order
+                1. external_agreement_no 签约号
+                2. 扣款订单号
+                
+超级会员退款表：xxx_refund_order
+                1. external_agreement_no 签约号
+                2. 扣款订单号
+                3. 退款订单号
+                 
+用户签约表：xxx_agreement_record，
+            1. external_agreement_no 签约号
+             2. status 0 未签约，1已签约，2，已失效
+             3. 续期时间 . d：天 2. m：（30，90，年）
+</code></pre>
+<h3 id="2-类图"><a href="#2-类图" class="headerlink" title="2. 类图"></a>2. 类图</h3><pre class="mermaid">classDiagram
+    xxx_agreement_record -- xxx_order:签约号
+    xxx_agreement_record -- xxx_refund_order:签约号
+   xxx_order --  xxx_refund_order:扣款订单号
+    class xxx_agreement_record{
+         签约表
+         external_agreement_no 签约号
+         status 状态
+         agreement_date 签约时间
+    }
+   class xxx_order{
+         购买表
+         external_agreement_no 签约号
+         扣款订单号
+
+    }
+    class xxx_refund_order{
+         退款表
+         external_agreement_no 签约号
+         扣款订单号
+         退款订单号
+    }</pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.brightchen.top">bright chen</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.brightchen.top/19777.html">https://www.brightchen.top/19777.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.brightchen.top" target="_blank">Bright Chen</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/">自动续费</a><a class="post-meta__tags" href="/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/">支付宝</a></div><div class="post-share"><div class="social-share" data-image="https://raw.githubusercontent.com/brightChenGit/picgo/main/2024/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.bootcdn.net/ajax/libs/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://raw.githubusercontent.com/BrightChenGit/picgo/main/2024/wx.jpg" target="_blank"><img class="post-qr-code-img" src="https://raw.githubusercontent.com/BrightChenGit/picgo/main/2024/wx.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://raw.githubusercontent.com/BrightChenGit/picgo/main/2024/zfb.jpg" target="_blank"><img class="post-qr-code-img" src="https://raw.githubusercontent.com/BrightChenGit/picgo/main/2024/zfb.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/20077.html" title="node和python多版本控制"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">node和python多版本控制</div></div><div class="info-2"><div class="info-item-1">nvm作用：为node.js多版本切换工具地址：下载地址 环境变量注意node.js的path配置（自动安装时配置，zip包需要手动配置） 12NVM_HOME D:\tools\nvmNVM_SYMLINK D:\tools\nvm\自定义目录  命令1234567891011121314151617181920212223241.查看版本nvm2.查看列表nvm list available3.安装版本nvm install 版本4.使用版本nvm use 版本5.卸载版本nvm uninstall 版本6.默认全局版本nvm alias default &lt;version&gt;7.查看版本node -V8.查看列表nvm list    pyenv-win作用：为python在win下的多版本切换工具地址：下载地址 注意1.需要在git上下载，然后windows...</div></div></div></a><a class="pagination-related" href="/43370.html" title="openJdk21镜像打包制作"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">openJdk21镜像打包制作</div></div><div class="info-2"><div class="info-item-1">一.目的：制作基于openjdk21的基础镜像，方便后续使用内容：1.使用的是Debian 11 slim 作为基础镜像（在此感谢no name大佬提醒我alpine做为基础镜像不稳定的问题）2.使用adoptium的OpenJDK21U-jre_x64_linux_hotspot_21.0.4_7.tar.gz 做为环境 打包后的镜像大小在319MB 二.dockerfile 代码12345678910111213141516171819202122232425262728293031323334353637# 使用 Debian 11 slim 作为基础镜像FROM debian:11-slim# 设置环境变量ENV jdk=OpenJDK21U-jre_x64_linux_hotspot_21.0.4_7.tar.gzMAINTAINER bright &quot;1024347104@qq.com&quot;# 配置镜像源RUN sed -i &#x27;s/deb.debian.org/mirrors.aliyun.com/g&#x27;...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/brightChenGit/picgo/main/2024/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">bright chen</div><div class="author-info-description">有趣的技术分享小破站</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/brightChenGit"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/brightChenGit" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_30240219?type=blog" target="_blank" title="CSDN"><i class="fa-solid fa-c" style="color: #4a7dbe;"></i></a><a class="social-icon" href="tencent://message/?uin=1024347104&amp;amp;Site=Sambow&amp;amp;Menu=yes" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="Rss"><i class="fa-solid fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎浏览<br/>内容完善中...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3%EF%BC%9A"><span class="toc-text">一. 参考文档：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%B5%81%E7%A8%8B%E8%AE%BE%E8%AE%A1"><span class="toc-text">二. 流程设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-text">1. 自动续费时序图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8E%A5%E5%8F%A3%E7%9B%B8%E5%85%B3"><span class="toc-text">2. 接口相关</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">三. 注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BA%A7%E5%93%81%E7%89%B9%E8%89%B2"><span class="toc-text">1. 产品特色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B3%A8%E6%84%8F"><span class="toc-text">2. 注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AD%BE%E7%BA%A6%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0"><span class="toc-text">3.  签约规则参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%89%A3%E6%AC%BE%EF%BC%88-%E5%8E%9F%E9%80%80%E6%AC%BE%E6%8E%A5%E5%8F%A3-%EF%BC%89"><span class="toc-text">4. 扣款（ (原退款接口)）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%B4%B9%E7%8E%87"><span class="toc-text">5. 费率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E9%80%80%E6%AC%BE-%E5%8E%9F%E9%80%80%E6%AC%BE%E6%8E%A5%E5%8F%A3"><span class="toc-text">6.退款 (原退款接口)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E7%AD%BE%E7%BA%A6%E8%A7%A3%E7%BA%A6%E8%BF%94%E5%9B%9E"><span class="toc-text">7.签约解约返回</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-%E5%8C%BA%E5%88%86%E6%94%AF%E4%BB%98%E8%BF%94%E5%9B%9E%E5%BC%82%E6%AD%A5%E5%92%8C%E7%AD%BE%E7%BA%A6%E8%BF%94%E5%9B%9E%E5%BC%82%E6%AD%A5"><span class="toc-text">7.1  区分支付返回异步和签约返回异步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-%E5%8C%BA%E5%88%86%E7%AD%BE%E7%BA%A6%E8%BF%94%E5%9B%9E%E5%BC%82%E6%AD%A5%E5%92%8C%E8%A7%A3%E7%BA%A6%E8%BF%94%E5%9B%9E%E5%BC%82%E6%AD%A5"><span class="toc-text">7.2 区分签约返回异步和解约返回异步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E8%A1%A8%E8%AE%BE%E8%AE%A1"><span class="toc-text">四.表设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AF%B4%E6%98%8E"><span class="toc-text">1. 说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%B1%BB%E5%9B%BE"><span class="toc-text">2. 类图</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/60634.html" title="接口安全防线加解密(二)：加密后请求异常和文件上传处理">接口安全防线加解密(二)：加密后请求异常和文件上传处理</a><time datetime="2024-12-17T04:00:00.000Z" title="发表于 2024-12-17 12:00:00">2024-12-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/36987.html" title="springboot实现接口请求日志自动生成(日志自动埋点)">springboot实现接口请求日志自动生成(日志自动埋点)</a><time datetime="2024-12-16T10:00:00.000Z" title="发表于 2024-12-16 18:00:00">2024-12-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/26376.html" title="接口安全防线加解密(一)：springboot 全局/指定接口解密（同时支持参数在body和param）">接口安全防线加解密(一)：springboot 全局/指定接口解密（同时支持参数在body和param）</a><time datetime="2024-12-16T10:00:00.000Z" title="发表于 2024-12-16 18:00:00">2024-12-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/43039.html" title="rustdesk远程桌面使用">rustdesk远程桌面使用</a><time datetime="2024-12-02T10:00:00.000Z" title="发表于 2024-12-02 18:00:00">2024-12-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/12826.html" title="mini主机服务器搭建">mini主机服务器搭建</a><time datetime="2024-11-28T10:00:00.000Z" title="发表于 2024-11-28 18:00:00">2024-11-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By bright chen</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = {"imageUploader":false,"search":false,"secureDomains":"43.139.91.254","locale":{"placeholder":"为了您能及时收到相关回复的邮件通知，请填写昵称和邮箱,且确保邮箱的正确性！"}}
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'http://43.139.91.254:8087',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://unpkg.com/@waline/client@v3/dist/waline.css')
+        .then(() => import('https://unpkg.com/@waline/client@v3/dist/waline.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script><script src="/js/myself.js"></script><script src="/js/f12.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script><script id="click-show-text" src="/js/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="search" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
