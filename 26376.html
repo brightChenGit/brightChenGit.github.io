@@ -232,14 +232,14 @@ toDevtools();</script><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compati
 })()</script><script>(() => {
   let initFn = window.walineFn || null
   const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
-  const option = {"imageUploader":false,"search":false,"secureDomains":"43.139.91.254","locale":{"placeholder":"为了您能及时收到相关回复的邮件通知，请填写昵称和邮箱,且确保邮箱的正确性！"}}
+  const option = {"imageUploader":false,"search":false,"secureDomains":["43.139.91.254","brightchengit.github.io","brightchen.top","www.brightchen.top"],"locale":{"placeholder":"为了您能及时收到相关回复的邮件通知，请填写昵称和邮箱,且确保邮箱的正确性！"}}
 
   const destroyWaline = ele => ele.destroy()
 
   const initWaline = (Fn, el = document, path = window.location.pathname) => {
     const waline = Fn({
       el: el.querySelector('#waline-wrap'),
-      serverURL: 'http://43.139.91.254:8087',
+      serverURL: 'https://43.139.91.254:8089',
       pageview: false,
       dark: 'html[data-theme="dark"]',
       comment: false,
