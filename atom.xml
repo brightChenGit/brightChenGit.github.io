@@ -2,15 +2,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Bright Chen</title>
   
-  
+  <subtitle>子非鱼，安知鱼之乐</subtitle>
   <link href="https://www.brightchen.top/atom.xml" rel="self"/>
   
   <link href="https://www.brightchen.top/"/>
-  <updated>2024-12-17T04:58:30.895Z</updated>
+  <updated>2024-12-17T04:58:30.000Z</updated>
   <id>https://www.brightchen.top/</id>
   
   <author>
-    <name>bright chen</name>
+    <name>Bright Chen | 子非</name>
     
   </author>
   
@@ -21,7 +21,7 @@
     <link href="https://www.brightchen.top/60634.html"/>
     <id>https://www.brightchen.top/60634.html</id>
     <published>2024-12-17T04:00:00.000Z</published>
-    <updated>2024-12-17T04:58:30.895Z</updated>
+    <updated>2024-12-17T04:58:30.000Z</updated>
     
     
     <summary type="html">加密后请求异常和文件上传处理</summary>
@@ -46,7 +46,7 @@
     <link href="https://www.brightchen.top/36987.html"/>
     <id>https://www.brightchen.top/36987.html</id>
     <published>2024-12-16T10:00:00.000Z</published>
-    <updated>2024-12-17T04:58:30.903Z</updated>
+    <updated>2024-12-17T04:58:30.000Z</updated>
     
     
     <summary type="html">springboot实现接口请求日志自动生成(日志自动埋点)</summary>
@@ -73,7 +73,7 @@
     <link href="https://www.brightchen.top/26376.html"/>
     <id>https://www.brightchen.top/26376.html</id>
     <published>2024-12-16T10:00:00.000Z</published>
-    <updated>2024-12-17T04:58:30.886Z</updated>
+    <updated>2024-12-17T04:58:30.000Z</updated>
     
     
     <summary type="html">springboot 全局/指定接口解密（同时支持参数在body和param）</summary>
@@ -98,7 +98,7 @@
     <link href="https://www.brightchen.top/43039.html"/>
     <id>https://www.brightchen.top/43039.html</id>
     <published>2024-12-02T10:00:00.000Z</published>
-    <updated>2024-12-17T04:58:30.875Z</updated>
+    <updated>2024-12-17T04:58:30.000Z</updated>
     
     
     <summary type="html">rustdesk远程桌面使用</summary>
@@ -119,7 +119,7 @@
     <link href="https://www.brightchen.top/12826.html"/>
     <id>https://www.brightchen.top/12826.html</id>
     <published>2024-11-28T10:00:00.000Z</published>
-    <updated>2024-12-17T04:58:30.648Z</updated>
+    <updated>2024-12-20T09:21:01.303Z</updated>
     
     
     <summary type="html">mini主机服务器搭建</summary>
@@ -140,7 +140,7 @@
     <link href="https://www.brightchen.top/20077.html"/>
     <id>https://www.brightchen.top/20077.html</id>
     <published>2024-11-26T10:00:00.000Z</published>
-    <updated>2024-12-17T04:58:30.764Z</updated>
+    <updated>2024-12-17T04:58:30.000Z</updated>
     
     
     <summary type="html">在windows的多版本控制node和python</summary>
@@ -163,7 +163,7 @@
     <link href="https://www.brightchen.top/19777.html"/>
     <id>https://www.brightchen.top/19777.html</id>
     <published>2024-11-26T10:00:00.000Z</published>
-    <updated>2024-12-17T04:58:30.911Z</updated>
+    <updated>2024-12-17T04:58:30.000Z</updated>
     
     
     <summary type="html">支付宝自动续费设计</summary>
@@ -186,7 +186,7 @@
     <link href="https://www.brightchen.top/43370.html"/>
     <id>https://www.brightchen.top/43370.html</id>
     <published>2024-07-30T10:00:00.000Z</published>
-    <updated>2024-12-17T04:58:30.656Z</updated>
+    <updated>2024-12-17T04:58:30.000Z</updated>
     
     
     <summary type="html">openJdk21镜像打包制作</summary>

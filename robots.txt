@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /message/
+Disallow: /about/
+Sitemap: http://brightchen.top/sitemap.xml
+Sitemap: http://brightchen.top/baidusitemap.xml

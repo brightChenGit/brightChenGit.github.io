@@ -46,7 +46,7 @@ function  showIcp(){
     // 获取当前域名和路径 指定 域名下首页展示备案信息
     const hostname = window.location.hostname;
     const isHomePage = typeof GLOBAL_CONFIG_SITE !== 'undefined' && GLOBAL_CONFIG_SITE.isHome;
-    console.log('hostname');
+    // console.log('hostname');
     // 检查是否满足条件
     if (hostname === '192.168.31.229' && isHomePage) {
         // 显示备案信息的逻辑  nofollow 告知搜索引擎不要追踪此链接或传递权重
@@ -56,7 +56,37 @@ function  showIcp(){
     }
 
 }
+// 参考https://www.tjsky.net/tutorial/1026
+//反代理问题
+const host = window.location.host
+// 使用原生JavaScript的btoa函数进行base64编码
+var encodedString = window.btoa(host);
 
-
-
+if (encodedString !== 'YnJpZ2h0Y2hlbi50b3A='
+    &&encodedString !== 'd3d3LmJyaWdodGNoZW4udG9w'
+    &&encodedString !== 'YnJpZ2h0Y2hlbmdpdC5naXRodWIuaW8'
+    &&!host.startsWith('43.139.91.254')
+    &&!host.startsWith('192.168.31.229')
+    && ! host.startsWith('localhost')
+    && ! host.startsWith('127.0.0.1')) {
+    document.body.innerHTML = [
+        '<div style="margin: auto;">',
+        '<h1>当前页面并非本文作者的主页，将在五秒后跳转。</h1>',
+        '<br />',
+        '<h1>请此站点持有者联系我: 1024347104@qq.com</h1>',
+        '</div>',
+    ].join('')
+    document.body.style = [
+        'background-color: white;',
+        'color: black;',
+        'text-align: center;',
+        'font-size: 50px;',
+        'width: 100vw;',
+        'height: 100vh;',
+        'display: flex;',
+    ].join('')
+    setTimeout(() => {
+        window.location.href = 'https://brightchen.top'
+    }, 5000)
+}
 
