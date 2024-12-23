@@ -6,7 +6,7 @@
   <link href="https://www.brightchen.top/atom.xml" rel="self"/>
   
   <link href="https://www.brightchen.top/"/>
-  <updated>2024-12-17T04:58:30.000Z</updated>
+  <updated>2024-12-23T09:22:02.000Z</updated>
   <id>https://www.brightchen.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一.hexo的下载安装及部署</title>
+    <link href="https://www.brightchen.top/319edf64.html"/>
+    <id>https://www.brightchen.top/319edf64.html</id>
+    <published>2024-12-23T08:55:43.000Z</published>
+    <updated>2024-12-23T09:22:02.000Z</updated>
+    
+    
+    <summary type="html">hexo的下载安装及部署</summary>
+    
+    
+    
+    <category term="博客" scheme="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="hexo下载安装" scheme="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/hexo%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85/"/>
+    
+    
+    <category term="标签" scheme="https://www.brightchen.top/tags/%E6%A0%87%E7%AD%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>接口安全防线加解密(二)：加密后请求异常和文件上传处理</title>
