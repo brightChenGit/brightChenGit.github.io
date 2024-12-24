@@ -59,13 +59,11 @@ function  showIcp(){
 // 参考https://www.tjsky.net/tutorial/1026
 //反代理问题
 const host = window.location.host
-console.log(host)
 // 使用原生JavaScript的btoa函数进行base64编码
 var encodedString = window.btoa(host);
-console.log(encodedString)
 if (encodedString !== 'YnJpZ2h0Y2hlbi50b3A='
     &&encodedString !== 'd3d3LmJyaWdodGNoZW4udG9w'
-    &&encodedString !== 'YnJpZ2h0Y2hlbmdpdC5naXRodWIuaW8'
+    &&encodedString !== 'YnJpZ2h0Y2hlbmdpdC5naXRodWIuaW8='
     &&!host.startsWith('43.139.91.254')
     &&!host.startsWith('192.168.31.229')
     && ! host.startsWith('localhost')
