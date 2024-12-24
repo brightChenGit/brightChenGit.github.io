@@ -52,7 +52,7 @@ function  showIcp(){
         // 显示备案信息的逻辑  nofollow 告知搜索引擎不要追踪此链接或传递权重
         $('#footer-wrap').append('<a href="http://beian.miit.gov.cn/" rel="nofollow" style="" target="_blank">XICP备xxxxxxx-x</a>')
     } else {
-        console.log('当前页面不符合条件');
+        // console.log('当前页面不符合条件');
     }
 
 }
