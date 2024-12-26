@@ -46,11 +46,10 @@ function  showIcp(){
     // 获取当前域名和路径 指定 域名下首页展示备案信息
     const hostname = window.location.hostname;
     const isHomePage = typeof GLOBAL_CONFIG_SITE !== 'undefined' && GLOBAL_CONFIG_SITE.isHome;
-    // console.log('hostname');
     // 检查是否满足条件
-    if (hostname === '192.168.31.229' && isHomePage) {
+    if (hostname === 'brightchen.top' || hostname==='www.brightchen.top') {
         // 显示备案信息的逻辑  nofollow 告知搜索引擎不要追踪此链接或传递权重
-        $('#footer-wrap').append('<a href="http://beian.miit.gov.cn/" rel="nofollow" style="" target="_blank">XICP备xxxxxxx-x</a>')
+        $('#footer-wrap').append('<a href="http://beian.miit.gov.cn/" rel="nofollow" style="" target="_blank">粤ICP备2024355392号-1</a>')
     } else {
         // console.log('当前页面不符合条件');
     }
@@ -64,7 +63,6 @@ var encodedString = window.btoa(host);
 if (encodedString !== 'YnJpZ2h0Y2hlbi50b3A='
     &&encodedString !== 'd3d3LmJyaWdodGNoZW4udG9w'
     &&encodedString !== 'YnJpZ2h0Y2hlbmdpdC5naXRodWIuaW8='
-    &&!host.startsWith('43.139.91.254')
     &&!host.startsWith('192.168.31.229')
     && ! host.startsWith('localhost')
     && ! host.startsWith('127.0.0.1')) {
