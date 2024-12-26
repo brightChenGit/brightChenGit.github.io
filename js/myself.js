@@ -49,10 +49,11 @@ function  showIcp(){
     // 检查是否满足条件
     if (hostname === 'brightchen.top' || hostname==='www.brightchen.top') {
         // 显示备案信息的逻辑  nofollow 告知搜索引擎不要追踪此链接或传递权重
-        $('#footer-wrap').append('<a href="http://beian.miit.gov.cn/" rel="nofollow" style="" target="_blank">粤ICP备2024355392号-1</a>')
+        $('#footer-wrap').append('<a href="http://beian.miit.gov.cn/" rel="nofollow" style="" target="_blank">粤ICP备2024355392号-1</a> 丨 ')
     } else {
         // console.log('当前页面不符合条件');
     }
+    $('#footer-wrap').append('本网站由<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" rel="nofollow" style="" target="_blank"><img src="https://www.brightchen.top/img/upyun.png" align="absmiddle" width="66px" height="31px"></a>提供CDN加速/云存储服务')
 
 }
 // 参考https://www.tjsky.net/tutorial/1026
