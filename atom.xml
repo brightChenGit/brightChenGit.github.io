@@ -42,7 +42,7 @@
     <link href="https://www.brightchen.top/7ebf9c57.html"/>
     <id>https://www.brightchen.top/7ebf9c57.html</id>
     <published>2025-01-06T04:00:00.000Z</published>
-    <updated>2025-01-07T01:50:33.000Z</updated>
+    <updated>2025-01-07T03:24:09.355Z</updated>
     
     
     <summary type="html">通过alist使天翼云盘能webdav访问，通过rclone实现alist的webdav挂载在Linux上，然后通过rclone的克隆命令，执行定时任务备份数据到天翼云盘上。</summary>
