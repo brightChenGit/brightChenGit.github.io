@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>hexo+rss订阅配置</title>
+      <link href="/9a6ba976.html"/>
+      <url>/9a6ba976.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="rss定义"><a href="#rss定义" class="headerlink" title="rss定义"></a>rss定义</h2><p>Atom 1.0和RSS 2.0是两种常见的内容聚合协议，它们允许用户订阅网站的更新内容，无需频繁访问网站即可获取最新信息。这两种格式虽然存在一些差异，但都旨在简化内容分发流程，提高信息获取效率。</p><ul><li><strong>Atom 1.0</strong>：这是一种较新的标准，由IETF（互联网工程任务组）定义。Atom 1.0规范更加严格，支持更多的元数据字段，如作者信息、分类标签等，因此能够提供更丰富的内容描述。此外，Atom 1.0还支持双向通信，即除了发布更新外，还可以接收反馈信息。</li><li><strong>RSS 2.0</strong>：RSS（Really Simple Syndication）是一种更为广泛使用的格式，主要用于新闻和其他经常更新的信息。RSS 2.0版本较为成熟稳定，兼容性好，大多数RSS阅读器都能很好地支持这一标准。尽管它的功能相对简单，但对于大多数博客和新闻站点而言已经足够使用。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-feed</span><br></pre></td></tr></table></figure></li></ul><h2 id="2-配置-config-yml的plugins配置"><a href="#2-配置-config-yml的plugins配置" class="headerlink" title="2.配置_config.yml的plugins配置"></a>2.配置_config.yml的plugins配置</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions  </span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="attr">feed:</span>  </span><br><span class="line">  <span class="attr">type:</span> <span class="string">atom</span> <span class="comment"># or rss2  </span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">atom.xml</span> <span class="comment"># 订阅源路径  </span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">20</span> <span class="comment"># 文章数量限制  </span></span><br><span class="line">  <span class="attr">hub:</span> <span class="comment"># 如果你使用了PubSubHubbub服务，请填写此项  </span></span><br><span class="line">  <span class="attr">content:</span> <span class="literal">false</span> <span class="comment"># 如果你想包含完整的文章内容而不是摘要，请设置为true  </span></span><br><span class="line">  <span class="attr">content_limit:</span> <span class="number">140</span> <span class="comment"># 摘要字符长度限制  </span></span><br><span class="line">  <span class="attr">content_limit_delim:</span> <span class="string">&#x27;read more&#x27;</span> <span class="comment"># 摘要分隔符  </span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-date</span> <span class="comment"># 文章排序方式</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="3-访问"><a href="#3-访问" class="headerlink" title="3.访问"></a>3.访问</h2><p>访问你自己的网站的atom.xml</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://yoursite/atom.xml</span><br></pre></td></tr></table></figure><p><a href="https://www.brightchen,top/atom.xml">例如我的网站的xml:https://www.brightchen,top/atom.xml</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客 </category>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>天翼云盘挂载到linux做为备份盘</title>
       <link href="/7ebf9c57.html"/>
       <url>/7ebf9c57.html</url>

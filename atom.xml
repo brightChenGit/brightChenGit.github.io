@@ -6,7 +6,7 @@
   <link href="https://www.brightchen.top/atom.xml" rel="self"/>
   
   <link href="https://www.brightchen.top/"/>
-  <updated>2025-01-07T01:50:35.443Z</updated>
+  <updated>2025-01-07T02:02:32.744Z</updated>
   <id>https://www.brightchen.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo+rss订阅配置</title>
+    <link href="https://www.brightchen.top/9a6ba976.html"/>
+    <id>https://www.brightchen.top/9a6ba976.html</id>
+    <published>2025-01-07T01:59:41.000Z</published>
+    <updated>2025-01-07T02:02:32.744Z</updated>
+    
+    
+    <summary type="html">hexo中rss订阅配置</summary>
+    
+    
+    
+    <category term="博客" scheme="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="hexo" scheme="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/hexo/"/>
+    
+    
+    <category term="hexo" scheme="https://www.brightchen.top/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>天翼云盘挂载到linux做为备份盘</title>
