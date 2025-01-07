@@ -40,16 +40,16 @@ function show_date_time() {
     window.setTimeout("show_date_time()", 1000);
 }
 
-
 function  showIcp(){
 
     // 获取当前域名和路径 指定 域名下首页展示备案信息
     const hostname = window.location.hostname;
     const isHomePage = typeof GLOBAL_CONFIG_SITE !== 'undefined' && GLOBAL_CONFIG_SITE.isHome;
     // 检查是否满足条件
-    if (hostname === 'brightchen.top' || hostname==='www.brightchen.top') {
+    if (hostname === 'brightchen.top' || hostname==='www.brightchen.top'||hostname === '192.168.31.229' ) {
         // 显示备案信息的逻辑  nofollow 告知搜索引擎不要追踪此链接或传递权重
-        $('#footer-wrap').append('<a href="http://beian.miit.gov.cn/" rel="nofollow" style="" target="_blank">粤ICP备2024355392号-1</a> 丨 ')
+        $('#footer-wrap').append('<a href="http://beian.miit.gov.cn/" rel="nofollow" style="" target="_blank">粤ICP备2024355392号-1</a>&nbsp;|&nbsp;')
+        $('#footer-wrap').append('<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602013390" rel="nofollow" style="" target="_blank"><img src="https://www.brightchen.top/img/beian.png" alt="备案" align="absmiddle" width="20px" height="20px">粤公网安备44010602013390号</a><br>')
     } else {
         // console.log('当前页面不符合条件');
     }
