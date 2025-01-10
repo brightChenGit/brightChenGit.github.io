@@ -53,7 +53,7 @@ function  showIcp(){
     } else {
         // console.log('当前页面不符合条件');
     }
-    $('#footer-wrap').append('本网站由<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" rel="nofollow" style="" target="_blank"><img src="https://www.brightchen.top/img/upyun.png" alt="又拍云" align="absmiddle" width="66px" height="31px"></a>提供CDN加速/云存储服务')
+    $('#footer-wrap').append('本网站由<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" rel="nofollow" style="" target="_blank"><img src="https://www.brightchen.top/img/upyun.png" alt="又拍云" align="absmiddle" width="59.4px" height="30.2px"></a>提供CDN加速/云存储服务')
 
 }
 // 参考https://www.tjsky.net/tutorial/1026

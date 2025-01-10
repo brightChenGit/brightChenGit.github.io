@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Bright Chen</title>
+  
+  <subtitle>子非鱼，安知鱼之乐</subtitle>
+  <link href="https://www.brightchen.top/atom.xml" rel="self"/>
+  
+  <link href="https://www.brightchen.top/"/>
+  <updated>2025-01-07T02:03:32.000Z</updated>
+  <id>https://www.brightchen.top/</id>
+  
+  <author>
+    <name>Bright Chen | 子非</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo+rss订阅配置</title>
+    <link href="https://www.brightchen.top/9a6ba976.html"/>
+    <id>https://www.brightchen.top/9a6ba976.html</id>
+    <published>2025-01-07T01:59:41.000Z</published>
+    <updated>2025-01-07T02:03:32.000Z</updated>
+    
+    
+    <summary type="html">hexo中rss订阅配置</summary>
+    
+    
+    
+    <category term="博客" scheme="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="hexo" scheme="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/hexo/"/>
+    
+    
+    <category term="hexo" scheme="https://www.brightchen.top/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>天翼云盘挂载到linux做为备份盘</title>
+    <link href="https://www.brightchen.top/7ebf9c57.html"/>
+    <id>https://www.brightchen.top/7ebf9c57.html</id>
+    <published>2025-01-06T04:00:00.000Z</published>
+    <updated>2025-01-10T07:41:27.481Z</updated>
+    
+    
+    <summary type="html">通过alist使天翼云盘能webdav访问，通过rclone实现alist的webdav挂载在Linux上，然后通过rclone的克隆命令，执行定时任务备份数据到天翼云盘上。</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="服务器" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="服务器" scheme="https://www.brightchen.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一.hexo+butterfly+github的下载安装及部署</title>
+    <link href="https://www.brightchen.top/319edf64.html"/>
+    <id>https://www.brightchen.top/319edf64.html</id>
+    <published>2024-12-23T08:55:43.000Z</published>
+    <updated>2024-12-23T09:29:15.000Z</updated>
+    
+    
+    <summary type="html">hexo+butterfly+github的下载安装及部署</summary>
+    
+    
+    
+    <category term="博客" scheme="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="hexo" scheme="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/hexo/"/>
+    
+    
+    <category term="hexo" scheme="https://www.brightchen.top/tags/hexo/"/>
+    
+    <category term="git" scheme="https://www.brightchen.top/tags/git/"/>
+    
+    <category term="butterfly" scheme="https://www.brightchen.top/tags/butterfly/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>接口安全防线加解密(二)：加密后请求异常和文件上传处理</title>
+    <link href="https://www.brightchen.top/60634.html"/>
+    <id>https://www.brightchen.top/60634.html</id>
+    <published>2024-12-17T04:00:00.000Z</published>
+    <updated>2024-12-17T04:58:30.000Z</updated>
+    
+    
+    <summary type="html">加密后请求异常和文件上传处理</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="安全" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="springboot" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/springboot/"/>
+    
+    
+    <category term="springboot" scheme="https://www.brightchen.top/tags/springboot/"/>
+    
+    <category term="安全" scheme="https://www.brightchen.top/tags/%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>springboot实现接口请求日志自动生成(日志自动埋点)</title>
+    <link href="https://www.brightchen.top/36987.html"/>
+    <id>https://www.brightchen.top/36987.html</id>
+    <published>2024-12-16T10:00:00.000Z</published>
+    <updated>2025-01-07T02:12:35.000Z</updated>
+    
+    
+    <summary type="html">springboot实现接口请求日志自动生成(日志自动埋点)</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="安全" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="springboot" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/springboot/"/>
+    
+    
+    <category term="springboot" scheme="https://www.brightchen.top/tags/springboot/"/>
+    
+    <category term="日志" scheme="https://www.brightchen.top/tags/%E6%97%A5%E5%BF%97/"/>
+    
+    <category term="安全" scheme="https://www.brightchen.top/tags/%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>接口安全防线加解密(一)：springboot 全局/指定接口解密（同时支持参数在body和param）</title>
+    <link href="https://www.brightchen.top/26376.html"/>
+    <id>https://www.brightchen.top/26376.html</id>
+    <published>2024-12-16T10:00:00.000Z</published>
+    <updated>2024-12-17T04:58:30.000Z</updated>
+    
+    
+    <summary type="html">springboot 全局/指定接口解密（同时支持参数在body和param）</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="安全" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="springboot" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/springboot/"/>
+    
+    
+    <category term="springboot" scheme="https://www.brightchen.top/tags/springboot/"/>
+    
+    <category term="安全" scheme="https://www.brightchen.top/tags/%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rustdesk远程桌面使用</title>
+    <link href="https://www.brightchen.top/43039.html"/>
+    <id>https://www.brightchen.top/43039.html</id>
+    <published>2024-12-02T10:00:00.000Z</published>
+    <updated>2025-01-07T02:10:17.000Z</updated>
+    
+    
+    <summary type="html">rustdesk远程桌面使用</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="远程服务" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="rustdesk" scheme="https://www.brightchen.top/tags/rustdesk/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mini主机服务器搭建</title>
+    <link href="https://www.brightchen.top/12826.html"/>
+    <id>https://www.brightchen.top/12826.html</id>
+    <published>2024-11-28T10:00:00.000Z</published>
+    <updated>2024-12-23T08:14:04.000Z</updated>
+    
+    
+    <summary type="html">mini主机服务器搭建</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="服务器" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="服务器" scheme="https://www.brightchen.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>支付宝自动续费设计</title>
+    <link href="https://www.brightchen.top/19777.html"/>
+    <id>https://www.brightchen.top/19777.html</id>
+    <published>2024-11-26T10:00:00.000Z</published>
+    <updated>2025-01-07T02:11:07.000Z</updated>
+    
+    
+    <summary type="html">支付宝自动续费设计</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="支付宝" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
+    
+    
+    <category term="自动续费" scheme="https://www.brightchen.top/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/"/>
+    
+    <category term="支付宝" scheme="https://www.brightchen.top/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node和python多版本控制</title>
+    <link href="https://www.brightchen.top/20077.html"/>
+    <id>https://www.brightchen.top/20077.html</id>
+    <published>2024-11-26T10:00:00.000Z</published>
+    <updated>2025-01-07T02:09:40.000Z</updated>
+    
+    
+    <summary type="html">在windows的多版本控制node和python</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="语言版本控制" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+    
+    <category term="node" scheme="https://www.brightchen.top/tags/node/"/>
+    
+    <category term="python" scheme="https://www.brightchen.top/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>openJdk21镜像打包制作</title>
+    <link href="https://www.brightchen.top/43370.html"/>
+    <id>https://www.brightchen.top/43370.html</id>
+    <published>2024-07-30T10:00:00.000Z</published>
+    <updated>2025-01-07T02:08:52.000Z</updated>
+    
+    
+    <summary type="html">openJdk21镜像打包制作</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="docker" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/docker/"/>
+    
+    
+    <category term="docker" scheme="https://www.brightchen.top/tags/docker/"/>
+    
+  </entry>
+  
+</feed>
