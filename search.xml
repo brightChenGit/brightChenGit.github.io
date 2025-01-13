@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>minio对象存储和picgo图床使用</title>
+      <link href="/1d6c4e.html"/>
+      <url>/1d6c4e.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>1.通过minio搭建自己的对象存储系统<br>2.通过picgo实现图床功能</p><h2 id="1-docker-部署minio"><a href="#1-docker-部署minio" class="headerlink" title="1.docker 部署minio"></a>1.docker 部署minio</h2><p>MinIO 是一款高性能、分布式的开源对象存储系统，它专为云原生应用设计，旨在解决非结构化数据增长的需求。MinIO 支持 Amazon S3 API 兼容接口，这意味着它可以与现有的 S3 生态系统无缝集成，并且能够轻松地与其他服务和工具进行交互。此外，MinIO 提供了丰富的功能集，包括高可用性、数据冗余、加密等特性，适用于多种场景下的大规模数据管理.</p><h3 id="1-部署"><a href="#1-部署" class="headerlink" title="1 部署"></a>1 部署</h3><p><a href="https://github.com/minio/minio">官网地址</a><br>英文：<a href="https://min.io/">https://min.io/</a><br>中文：<a href="https://www.minio.org.cn/">https://www.minio.org.cn/</a><br>Minio_兼容Amason的S3分布式对象存储项目，采用Golang实现</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /var/minio/data</span><br><span class="line"><span class="built_in">mkdir</span> -p /var/minio/connfig</span><br><span class="line"></span><br><span class="line">docker run \</span><br><span class="line">-p 8085:9000 \</span><br><span class="line">-p 8086:9090 \</span><br><span class="line">--name minio \</span><br><span class="line">-d --restart=always \</span><br><span class="line">-e <span class="string">&quot;MINIO_ROOT_USER=xxxx用户账号xxx&quot;</span> \</span><br><span class="line">-e <span class="string">&quot;MINIO_ROOT_PASSWORD=xx账号密码xx&quot;</span> \</span><br><span class="line">-v /var/minio/data:/data \</span><br><span class="line">-v /var/minio/config:/root/.minio \</span><br><span class="line"> minio/minio server \</span><br><span class="line">/data --console-address <span class="string">&quot;:9090&quot;</span> -address <span class="string">&quot;:9000&quot;</span></span><br></pre></td></tr></table></figure><p>注意：<br>9000是访问资源的接口（个人改为8085）<br>9090是控制台的接口（个人改为8086）</p><h3 id="2-部署好后访问控制台"><a href="#2-部署好后访问控制台" class="headerlink" title="2. 部署好后访问控制台"></a>2. 部署好后访问控制台</h3><p>例如：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://你的ip:自定义的控制台端口</span><br></pre></td></tr></table></figure><p><img src="https://www.brightchen.top/picgo/2025/01/13/20250113161631102.png" alt="image.png"></p><h3 id="3-配置存储桶"><a href="#3-配置存储桶" class="headerlink" title="3.配置存储桶"></a>3.配置存储桶</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Buckets-&gt;Create Bucket-&gt;设置自定义名字如picgo2或者picgo-&gt;确定创建（Create Bucket）</span><br></pre></td></tr></table></figure><p><img src="https://www.brightchen.top/picgo/2025/01/13/20250113161642464.png" alt="image.png"><br><img src="https://www.brightchen.top/picgo/2025/01/13/20250113161655296.png" alt="image.png"></p><h3 id="4-配置密钥访问"><a href="#4-配置密钥访问" class="headerlink" title="4.配置密钥访问"></a>4.配置密钥访问</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access Keys-&gt;Create access keys-&gt;保存好Access key和Secret key-&gt;点击确定（Create）</span><br></pre></td></tr></table></figure><p><img src="https://www.brightchen.top/picgo/2025/01/13/20250113164808323.png" alt="image.png"><br><img src="https://www.brightchen.top/picgo/2025/01/13/20250113164817368.png" alt="image.png"></p><p>ps：其中的Restrict beyond user policy 可以指定该密钥访问哪个桶，及其相应权限，默认所有桶及所有权限</p><h3 id="5-minio-控制台wss请求处理"><a href="#5-minio-控制台wss请求处理" class="headerlink" title="5. minio 控制台wss请求处理"></a>5. minio 控制台wss请求处理</h3><p>直连ip情况下不存在该问题，<br>如果用nginx代理minio的控制台，那么需要http 1.1处理minio的wss请求</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        ...</span><br><span class="line">       # WebSocket support</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &quot;upgrade&quot;;  # 直接设置为&quot;upgrade&quot;</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure><h2 id="2-picgo-安装minio插件"><a href="#2-picgo-安装minio插件" class="headerlink" title="2.picgo 安装minio插件"></a>2.picgo 安装minio插件</h2><p>PicGo 是一款专为快速上传图片并获取图片 URL 链接而设计的开源工具，它不仅简化了图片管理流程，还支持多种图床服务，成为内容创作者、开发者和技术博主等用户的得力助手</p><p><a href="https://github.com/Molunerfinn/PicGo/releases">官网下载地址</a></p><h3 id="1-插件安装"><a href="#1-插件安装" class="headerlink" title="1.插件安装"></a>1.插件安装</h3><p>picgo-插件设置-搜索minio-安装minio的插件<br><img src="https://www.brightchen.top/picgo/2025/01/13/20250113164834181.png" alt="image.png"></p><h3 id="2-minio插件配置（安装后才有minio图床）"><a href="#2-minio插件配置（安装后才有minio图床）" class="headerlink" title="2.minio插件配置（安装后才有minio图床）"></a>2.minio插件配置（安装后才有minio图床）</h3><p>图床设置-minio图床，<br>记得设置为默认图床<br>点击配置<br>填上：<br>图床配置名：自定义<br>endpoint: 你的minio ip或者域名<br>port：注意非控制台端口：比如本文的8085（9000）<br>useSSL：不开<br>accessKey：上文自己保存的minio的配置<br>secretKey：上文自己保存的minio的配置<br>bucket：填写桶名比如：我自己的picgo<br>同名文件：选覆盖<br>基础目录：可以不填<br>自定义域名: 可以不填，我这边使用了nginx代理转发了minio，所以配置了minio的域名<br>自定义基础路径：可以不填，有默认值<br>自动归档：默认开启，PicGo程序会自动帮你按照yyyy&#x2F;MM&#x2F;dd的格式归档<br><img src="https://www.brightchen.top/picgo/2025/01/13/20250113164846308.png" alt="image.png"><br><img src="https://www.brightchen.top/picgo/2025/01/13/20250113164852147.png" alt="image.png"><br><img src="https://www.brightchen.top/picgo/2025/01/13/20250113164858268.png" alt="image.png"></p><h3 id="3-普通方式使用"><a href="#3-普通方式使用" class="headerlink" title="3.普通方式使用"></a>3.普通方式使用</h3><p>在<code>上传区</code>上传你的图片即可<br><img src="https://www.brightchen.top/picgo/2025/01/13/20250113164906253.png" alt="image.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> 服务器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 服务器 </tag>
+            
+            <tag> minio </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo优化之pwa增快网络访问，减少cdn流量访问</title>
       <link href="/6d23098a.html"/>
       <url>/6d23098a.html</url>

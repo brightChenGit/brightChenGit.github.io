@@ -6,7 +6,7 @@
   <link href="https://www.brightchen.top/atom.xml" rel="self"/>
   
   <link href="https://www.brightchen.top/"/>
-  <updated>2025-01-10T07:51:31.052Z</updated>
+  <updated>2025-01-13T09:05:10.798Z</updated>
   <id>https://www.brightchen.top/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>minio对象存储和picgo图床使用</title>
+    <link href="https://www.brightchen.top/1d6c4e.html"/>
+    <id>https://www.brightchen.top/1d6c4e.html</id>
+    <published>2025-01-13T08:15:05.000Z</published>
+    <updated>2025-01-13T09:05:10.798Z</updated>
+    
+    
+    <summary type="html">minio对象存储和picgo图床使用1.通过minio搭建自己的对象存储系统2.通过picgo实现图床功能</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="服务器" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="服务器" scheme="https://www.brightchen.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="minio" scheme="https://www.brightchen.top/tags/minio/"/>
+    
+  </entry>
+  
+  <entry>
     <title>hexo优化之pwa增快网络访问，减少cdn流量访问</title>
     <link href="https://www.brightchen.top/6d23098a.html"/>
     <id>https://www.brightchen.top/6d23098a.html</id>
     <published>2025-01-10T04:00:00.000Z</published>
-    <updated>2025-01-10T07:51:31.052Z</updated>
+    <updated>2025-01-10T07:54:04.791Z</updated>
     
     
     <summary type="html">hexo优化之pwa增快网络访问，减少cdn流量访问,1.通过cdn减少服务器的流量2.通过service worker拦截请求cdn，减少cdn的流量3.通过控制service worker只缓存浏览过的页面所必要的资源文件，减少整站缓存</summary>
