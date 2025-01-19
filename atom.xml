@@ -6,7 +6,7 @@
   <link href="https://www.brightchen.top/atom.xml" rel="self"/>
   
   <link href="https://www.brightchen.top/"/>
-  <updated>2025-01-13T09:05:10.798Z</updated>
+  <updated>2025-01-13T09:05:43.000Z</updated>
   <id>https://www.brightchen.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.brightchen.top/1d6c4e.html"/>
     <id>https://www.brightchen.top/1d6c4e.html</id>
     <published>2025-01-13T08:15:05.000Z</published>
-    <updated>2025-01-13T09:05:10.798Z</updated>
+    <updated>2025-01-13T09:05:43.000Z</updated>
     
     
     <summary type="html">minio对象存储和picgo图床使用1.通过minio搭建自己的对象存储系统2.通过picgo实现图床功能</summary>
@@ -44,7 +44,7 @@
     <link href="https://www.brightchen.top/6d23098a.html"/>
     <id>https://www.brightchen.top/6d23098a.html</id>
     <published>2025-01-10T04:00:00.000Z</published>
-    <updated>2025-01-10T07:54:04.791Z</updated>
+    <updated>2025-01-10T07:54:04.000Z</updated>
     
     
     <summary type="html">hexo优化之pwa增快网络访问，减少cdn流量访问,1.通过cdn减少服务器的流量2.通过service worker拦截请求cdn，减少cdn的流量3.通过控制service worker只缓存浏览过的页面所必要的资源文件，减少整站缓存</summary>
@@ -90,7 +90,7 @@
     <link href="https://www.brightchen.top/7ebf9c57.html"/>
     <id>https://www.brightchen.top/7ebf9c57.html</id>
     <published>2025-01-06T04:00:00.000Z</published>
-    <updated>2025-01-10T07:41:27.481Z</updated>
+    <updated>2025-01-10T07:41:27.000Z</updated>
     
     
     <summary type="html">通过alist使天翼云盘能webdav访问，通过rclone实现alist的webdav挂载在Linux上，然后通过rclone的克隆命令，执行定时任务备份数据到天翼云盘上。</summary>
@@ -125,9 +125,9 @@
     
     <category term="hexo" scheme="https://www.brightchen.top/tags/hexo/"/>
     
-    <category term="butterfly" scheme="https://www.brightchen.top/tags/butterfly/"/>
-    
     <category term="git" scheme="https://www.brightchen.top/tags/git/"/>
+    
+    <category term="butterfly" scheme="https://www.brightchen.top/tags/butterfly/"/>
     
   </entry>
   
