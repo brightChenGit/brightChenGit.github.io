@@ -6,7 +6,7 @@
   <link href="https://www.brightchen.top/atom.xml" rel="self"/>
   
   <link href="https://www.brightchen.top/"/>
-  <updated>2025-01-13T09:05:43.000Z</updated>
+  <updated>2025-01-21T02:27:48.560Z</updated>
   <id>https://www.brightchen.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.brightchen.top/1d6c4e.html"/>
     <id>https://www.brightchen.top/1d6c4e.html</id>
     <published>2025-01-13T08:15:05.000Z</published>
-    <updated>2025-01-13T09:05:43.000Z</updated>
+    <updated>2025-01-21T02:27:48.560Z</updated>
     
     
     <summary type="html">minio对象存储和picgo图床使用1.通过minio搭建自己的对象存储系统2.通过picgo实现图床功能</summary>
@@ -40,36 +40,11 @@
   </entry>
   
   <entry>
-    <title>hexo优化之pwa增快网络访问，减少cdn流量访问</title>
-    <link href="https://www.brightchen.top/6d23098a.html"/>
-    <id>https://www.brightchen.top/6d23098a.html</id>
-    <published>2025-01-10T04:00:00.000Z</published>
-    <updated>2025-01-10T07:54:04.000Z</updated>
-    
-    
-    <summary type="html">hexo优化之pwa增快网络访问，减少cdn流量访问,1.通过cdn减少服务器的流量2.通过service worker拦截请求cdn，减少cdn的流量3.通过控制service worker只缓存浏览过的页面所必要的资源文件，减少整站缓存</summary>
-    
-    
-    
-    <category term="博客" scheme="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    <category term="hexo" scheme="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/hexo/"/>
-    
-    
-    <category term="hexo" scheme="https://www.brightchen.top/tags/hexo/"/>
-    
-    <category term="butterfly" scheme="https://www.brightchen.top/tags/butterfly/"/>
-    
-    <category term="cdn" scheme="https://www.brightchen.top/tags/cdn/"/>
-    
-  </entry>
-  
-  <entry>
     <title>hexo+rss订阅配置</title>
     <link href="https://www.brightchen.top/9a6ba976.html"/>
     <id>https://www.brightchen.top/9a6ba976.html</id>
     <published>2025-01-07T01:59:41.000Z</published>
-    <updated>2025-01-07T02:03:32.000Z</updated>
+    <updated>2025-01-21T02:02:25.053Z</updated>
     
     
     <summary type="html">hexo中rss订阅配置</summary>
@@ -251,29 +226,6 @@
   </entry>
   
   <entry>
-    <title>支付宝自动续费设计</title>
-    <link href="https://www.brightchen.top/19777.html"/>
-    <id>https://www.brightchen.top/19777.html</id>
-    <published>2024-11-26T10:00:00.000Z</published>
-    <updated>2025-01-07T02:11:07.000Z</updated>
-    
-    
-    <summary type="html">支付宝自动续费设计</summary>
-    
-    
-    
-    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    <category term="支付宝" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
-    
-    
-    <category term="自动续费" scheme="https://www.brightchen.top/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/"/>
-    
-    <category term="支付宝" scheme="https://www.brightchen.top/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
-    
-  </entry>
-  
-  <entry>
     <title>node和python多版本控制</title>
     <link href="https://www.brightchen.top/20077.html"/>
     <id>https://www.brightchen.top/20077.html</id>
@@ -293,6 +245,29 @@
     <category term="node" scheme="https://www.brightchen.top/tags/node/"/>
     
     <category term="python" scheme="https://www.brightchen.top/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>支付宝自动续费设计</title>
+    <link href="https://www.brightchen.top/19777.html"/>
+    <id>https://www.brightchen.top/19777.html</id>
+    <published>2024-11-26T10:00:00.000Z</published>
+    <updated>2025-01-07T02:11:07.000Z</updated>
+    
+    
+    <summary type="html">支付宝自动续费设计</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="支付宝" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
+    
+    
+    <category term="自动续费" scheme="https://www.brightchen.top/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/"/>
+    
+    <category term="支付宝" scheme="https://www.brightchen.top/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
     
   </entry>
   
