@@ -55,3 +55,11 @@
     -o-transition: none!important;
 }
 
+#wl-edit {
+    background: url("https://www.brightchen.top/picgo/2025/01/21/1737438186373.jpg") 100% 100% no-repeat;
+    background-size: contain;
+}
+
+/*#waline-wrap textarea:focus {*/
+/*    background: url("https://www.brightchen.top/picgo/2025/01/21/1737438186373.jpg") 100% 100% no-repeat !important;;*/
+/*}*/
