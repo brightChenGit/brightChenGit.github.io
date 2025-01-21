@@ -189,6 +189,20 @@
   </url>
   
   <url>
+    <loc>https://www.brightchen.top/tags/butterfly/</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.brightchen.top/tags/cdn/</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.brightchen.top/tags/git/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -196,7 +210,35 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/butterfly/</loc>
+    <loc>https://www.brightchen.top/tags/springboot/</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.brightchen.top/tags/%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.brightchen.top/tags/%E6%97%A5%E5%BF%97/</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.brightchen.top/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.brightchen.top/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -211,13 +253,6 @@
   
   <url>
     <loc>https://www.brightchen.top/tags/minio/</loc>
-    <lastmod>2025-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.brightchen.top/tags/cdn/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -252,13 +287,6 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/docker/</loc>
-    <lastmod>2025-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.brightchen.top/tags/rustdesk/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -266,35 +294,7 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/springboot/</loc>
-    <lastmod>2025-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.brightchen.top/tags/%E6%97%A5%E5%BF%97/</loc>
-    <lastmod>2025-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.brightchen.top/tags/%E5%AE%89%E5%85%A8/</loc>
-    <lastmod>2025-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.brightchen.top/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/</loc>
-    <lastmod>2025-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.brightchen.top/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/</loc>
+    <loc>https://www.brightchen.top/tags/docker/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -324,7 +324,21 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/docker/</loc>
+    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/springboot/</loc>
+    <lastmod>2025-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -332,20 +346,6 @@
   
   <url>
     <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    <lastmod>2025-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/</loc>
-    <lastmod>2025-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -366,14 +366,14 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/springboot/</loc>
+    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/</loc>
+    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/docker/</loc>
     <lastmod>2025-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
