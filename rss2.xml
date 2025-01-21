@@ -9,8 +9,33 @@
     <atom:link href="https://www.brightchen.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>有趣的技术分享小破站</description>
-    <pubDate>Tue, 21 Jan 2025 03:37:15 GMT</pubDate>
+    <pubDate>Tue, 21 Jan 2025 07:24:38 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>umami部署</title>
+      <link>https://www.brightchen.top/49489cb4.html</link>
+      <guid>https://www.brightchen.top/49489cb4.html</guid>
+      <pubDate>Tue, 21 Jan 2025 04:28:04 GMT</pubDate>
+      
+      <description>umami部署docker化部署，</description>
+      
+      
+      
+      
+      <category domain="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      <category domain="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/umami/">umami</category>
+      
+      
+      <category domain="https://www.brightchen.top/tags/docker/">docker</category>
+      
+      <category domain="https://www.brightchen.top/tags/umami/">umami</category>
+      
+      
+      <comments>https://www.brightchen.top/49489cb4.html#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>nginx http3</title>
@@ -153,9 +178,9 @@
       
       <category domain="https://www.brightchen.top/tags/hexo/">hexo</category>
       
-      <category domain="https://www.brightchen.top/tags/git/">git</category>
-      
       <category domain="https://www.brightchen.top/tags/butterfly/">butterfly</category>
+      
+      <category domain="https://www.brightchen.top/tags/git/">git</category>
       
       
       <comments>https://www.brightchen.top/319edf64.html#disqus_thread</comments>
@@ -209,9 +234,9 @@
       
       <category domain="https://www.brightchen.top/tags/springboot/">springboot</category>
       
-      <category domain="https://www.brightchen.top/tags/%E6%97%A5%E5%BF%97/">日志</category>
-      
       <category domain="https://www.brightchen.top/tags/%E5%AE%89%E5%85%A8/">安全</category>
+      
+      <category domain="https://www.brightchen.top/tags/%E6%97%A5%E5%BF%97/">日志</category>
       
       
       <comments>https://www.brightchen.top/36987.html#disqus_thread</comments>
@@ -292,31 +317,6 @@
     </item>
     
     <item>
-      <title>支付宝自动续费设计</title>
-      <link>https://www.brightchen.top/19777.html</link>
-      <guid>https://www.brightchen.top/19777.html</guid>
-      <pubDate>Tue, 26 Nov 2024 10:00:00 GMT</pubDate>
-      
-      <description>支付宝自动续费设计</description>
-      
-      
-      
-      
-      <category domain="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/">技术</category>
-      
-      <category domain="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/">支付宝</category>
-      
-      
-      <category domain="https://www.brightchen.top/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/">自动续费</category>
-      
-      <category domain="https://www.brightchen.top/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/">支付宝</category>
-      
-      
-      <comments>https://www.brightchen.top/19777.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>node和python多版本控制</title>
       <link>https://www.brightchen.top/20077.html</link>
       <guid>https://www.brightchen.top/20077.html</guid>
@@ -338,6 +338,31 @@
       
       
       <comments>https://www.brightchen.top/20077.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>支付宝自动续费设计</title>
+      <link>https://www.brightchen.top/19777.html</link>
+      <guid>https://www.brightchen.top/19777.html</guid>
+      <pubDate>Tue, 26 Nov 2024 10:00:00 GMT</pubDate>
+      
+      <description>支付宝自动续费设计</description>
+      
+      
+      
+      
+      <category domain="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      <category domain="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/">支付宝</category>
+      
+      
+      <category domain="https://www.brightchen.top/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/">自动续费</category>
+      
+      <category domain="https://www.brightchen.top/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/">支付宝</category>
+      
+      
+      <comments>https://www.brightchen.top/19777.html#disqus_thread</comments>
       
     </item>
     
