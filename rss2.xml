@@ -9,7 +9,7 @@
     <atom:link href="https://www.brightchen.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>有趣的技术分享小破站</description>
-    <pubDate>Tue, 21 Jan 2025 07:24:38 GMT</pubDate>
+    <pubDate>Tue, 21 Jan 2025 07:26:33 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -18,7 +18,7 @@
       <guid>https://www.brightchen.top/49489cb4.html</guid>
       <pubDate>Tue, 21 Jan 2025 04:28:04 GMT</pubDate>
       
-      <description>umami部署docker化部署，</description>
+      <description>umami部署docker化部署，hexo butterfly配置使用umami</description>
       
       
       
