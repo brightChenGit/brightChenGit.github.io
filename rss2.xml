@@ -9,8 +9,33 @@
     <atom:link href="https://www.brightchen.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>有趣的技术分享小破站</description>
-    <pubDate>Tue, 21 Jan 2025 02:27:48 GMT</pubDate>
+    <pubDate>Tue, 21 Jan 2025 03:35:53 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>nginx http3</title>
+      <link>https://www.brightchen.top/399cdefc.html</link>
+      <guid>https://www.brightchen.top/399cdefc.html</guid>
+      <pubDate>Tue, 21 Jan 2025 03:28:04 GMT</pubDate>
+      
+      <description>nginx配置http3加速服务访问，提升web性能</description>
+      
+      
+      
+      
+      <category domain="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      <category domain="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/nginx/">nginx</category>
+      
+      
+      <category domain="https://www.brightchen.top/tags/nginx/">nginx</category>
+      
+      <category domain="https://www.brightchen.top/tags/http3/">http3</category>
+      
+      
+      <comments>https://www.brightchen.top/399cdefc.html#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>minio对象存储和picgo图床使用</title>
@@ -34,6 +59,33 @@
       
       
       <comments>https://www.brightchen.top/1d6c4e.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>hexo优化之pwa增快网络访问，减少cdn流量访问</title>
+      <link>https://www.brightchen.top/6d23098a.html</link>
+      <guid>https://www.brightchen.top/6d23098a.html</guid>
+      <pubDate>Fri, 10 Jan 2025 04:00:00 GMT</pubDate>
+      
+      <description>hexo优化之pwa增快网络访问，减少cdn流量访问,1.通过cdn减少服务器的流量2.通过service worker拦截请求cdn，减少cdn的流量3.通过控制service worker只缓存浏览过的页面所必要的资源文件，减少整站缓存</description>
+      
+      
+      
+      
+      <category domain="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      <category domain="https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/hexo/">hexo</category>
+      
+      
+      <category domain="https://www.brightchen.top/tags/hexo/">hexo</category>
+      
+      <category domain="https://www.brightchen.top/tags/butterfly/">butterfly</category>
+      
+      <category domain="https://www.brightchen.top/tags/cdn/">cdn</category>
+      
+      
+      <comments>https://www.brightchen.top/6d23098a.html#disqus_thread</comments>
       
     </item>
     

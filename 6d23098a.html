@@ -1,0 +1,355 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>hexo优化之pwa增快网络访问，减少cdn流量访问 | Bright Chen</title><meta name="author" content="Bright Chen | 子非"><meta name="copyright" content="Bright Chen | 子非"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="hexo优化之pwa增快网络访问，减少cdn流量访问,1.通过cdn减少服务器的流量2.通过service worker拦截请求cdn，减少cdn的流量3.通过控制service worker只缓存浏览过的页面所必要的资源文件，减少整站缓存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo优化之pwa增快网络访问，减少cdn流量访问">
+<meta property="og:url" content="https://www.brightchen.top/6d23098a.html">
+<meta property="og:site_name" content="Bright Chen">
+<meta property="og:description" content="hexo优化之pwa增快网络访问，减少cdn流量访问,1.通过cdn减少服务器的流量2.通过service worker拦截请求cdn，减少cdn的流量3.通过控制service worker只缓存浏览过的页面所必要的资源文件，减少整站缓存">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.brightchen.top/picgo/1737427010658.jpg">
+<meta property="article:published_time" content="2025-01-10T04:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-21T02:45:03.848Z">
+<meta property="article:author" content="Bright Chen | 子非">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="butterfly">
+<meta property="article:tag" content="cdn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.brightchen.top/picgo/1737427010658.jpg"><link rel="shortcut icon" href="https://www.brightchen.top/picgo/favicon-32x32.png"><link rel="canonical" href="https://www.brightchen.top/6d23098a.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":10,"languages":{"author":"作者: Bright Chen | 子非","link":"链接: ","source":"来源: Bright Chen","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'hexo优化之pwa增快网络访问，减少cdn流量访问',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/myself.css"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Bright Chen" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Bright Chen" type="application/rss+xml">
+</head><body><div id="web_bg" style="background-color: #efefef;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://www.brightchen.top/picgo/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/message"><i class="fa-fw fas fa-message"></i><span> 留言板</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 常用工具</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.bejson.com/"><i class="fa-fw fas fa-j"></i><span> bejson</span></a></li><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://um.brightchen.top/share/1abvwIjll0irtP6Z/www.brightchen.top"><i class="fa-fw fas fa-t"></i><span> 统计</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://www.brightchen.top/picgo/1737427010658.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Bright Chen</span></a><a class="nav-page-title" href="/"><span class="site-name">hexo优化之pwa增快网络访问，减少cdn流量访问</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/message"><i class="fa-fw fas fa-message"></i><span> 留言板</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 常用工具</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.bejson.com/"><i class="fa-fw fas fa-j"></i><span> bejson</span></a></li><li><a class="site-page child" target="_blank" rel="noopener external nofollow noreferrer" href="https://um.brightchen.top/share/1abvwIjll0irtP6Z/www.brightchen.top"><i class="fa-fw fas fa-t"></i><span> 统计</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div><div id="nav-right"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">hexo优化之pwa增快网络访问，减少cdn流量访问</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-10T04:00:00.000Z" title="发表于 2025-01-10 12:00:00">2025-01-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-21T02:45:03.848Z" title="更新于 2025-01-21 10:45:03">2025-01-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%9A%E5%AE%A2/hexo/">hexo</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">977</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="umamiPV" data-path="/6d23098a.html"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="1-原理："><a href="#1-原理：" class="headerlink" title="1.原理："></a>1.原理：</h2><p>1.通过cdn减少服务器的流量<br>2.通过service worker拦截请求cdn，减少cdn的流量<br>3.通过控制service worker只缓存浏览过的页面所必要的资源文件，减少整站缓存</p>
+<p>ps：一般人都是到服务器节点终止，由于个人的小破站是在mini主机上的内网穿透的，所以加上了mini主机<br>流程图如下：</p>
+<pre class="mermaid">sequenceDiagram
+  participant 用户
+  participant CDN
+  participant service worker
+  participant 服务器
+  participant mini主机
+  用户->>CDN:1.首次访问
+  CDN->>服务器:2.查询资源
+  服务器->>mini主机:3.查询资源
+  mini主机->>服务器:4.返回资源
+  服务器->>CDN:5.返回资源
+  CDN->>用户:6.返回资源
+  CDN->>+service worker:7.缓存资源
+  用户->>service worker:8.第二次访问，查询缓存
+  service worker->>用户:9.返回资源
+  service worker->>-CDN:10.无相关资源时请求</pre>
+
+<h2 id="2-hexo-offline"><a href="#2-hexo-offline" class="headerlink" title="2.hexo-offline"></a>2.hexo-offline</h2><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/JLHwung/hexo-offline">官网地址</a></p>
+<p>hexo-offline 是一个官方提供的 Hexo 插件，它通过使用 Service Worker 技术为 Hexo 网站添加离线浏览支持。Service Worker 是一种可编程的网络代理，允许你拦截和响应网络请求，从而实现诸如缓存资源、推送通知等功能。对于 Hexo 站点来说，安装了 hexo-offline 插件后，当用户首次访问你的网站时，浏览器会下载并缓存必要的资源文件（如 HTML 页面、CSS 样式表、JavaScript 文件等）。一旦这些资源被缓存，即使用户在没有互联网连接的情况下再次访问你的网站，他们也能够查看之前已经加载过的页面。</p>
+<h2 id="3-下载安装"><a href="#3-下载安装" class="headerlink" title="3.下载安装"></a>3.下载安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-offline --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-配置-config-butterfly-yml"><a href="#4-配置-config-butterfly-yml" class="headerlink" title="4.配置_config.butterfly.yml"></a>4.配置_config.butterfly.yml</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pwa:  </span><br><span class="line">  enable: true  </span><br><span class="line">  manifest: /manifest.json  </span><br><span class="line">  apple_touch_icon: /img/apple-touch-icon.png  </span><br><span class="line">  favicon_32_32: /img/favicon-32x32.png  </span><br><span class="line">  favicon_16_16: /img/favicon-16x16.png  </span><br><span class="line">  mask_icon:</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="5-hexo的-source目录下增加配置manifest-json-文件"><a href="#5-hexo的-source目录下增加配置manifest-json-文件" class="headerlink" title="5.hexo的_source目录下增加配置manifest.json 文件"></a>5.hexo的_source目录下增加配置manifest.json 文件</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>  </span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bight&quot;</span><span class="punctuation">,</span> </span><br><span class="line">  <span class="attr">&quot;short_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bright&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">  <span class="attr">&quot;theme_color&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#2196f3&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">  <span class="attr">&quot;background_color&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#2196f3&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">  <span class="attr">&quot;display&quot;</span><span class="punctuation">:</span> <span class="string">&quot;standalone&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">  <span class="attr">&quot;scope&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">  <span class="attr">&quot;start_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">  <span class="attr">&quot;screenshots&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>  </span><br><span class="line">    <span class="punctuation">&#123;</span>  </span><br><span class="line">      <span class="attr">&quot;src&quot;</span><span class="punctuation">:</span> <span class="string">&quot;android-chrome-512x512.png&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">      <span class="attr">&quot;sizes&quot;</span><span class="punctuation">:</span> <span class="string">&quot;512x512&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;image/png&quot;</span>  </span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span>  </span><br><span class="line">    <span class="punctuation">&#123;</span>  </span><br><span class="line">      <span class="attr">&quot;src&quot;</span><span class="punctuation">:</span> <span class="string">&quot;android-chrome-512x512.png&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">      <span class="attr">&quot;sizes&quot;</span><span class="punctuation">:</span> <span class="string">&quot;512x512&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">      <span class="attr">&quot;form_factor&quot;</span><span class="punctuation">:</span> <span class="string">&quot;wide&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;image/png&quot;</span>  </span><br><span class="line">    <span class="punctuation">&#125;</span>  </span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span>  </span><br><span class="line">  <span class="attr">&quot;icons&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>  </span><br><span class="line">    <span class="punctuation">&#123;</span>  </span><br><span class="line">      <span class="attr">&quot;src&quot;</span><span class="punctuation">:</span> <span class="string">&quot;android-chrome-512x512.png&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">      <span class="attr">&quot;sizes&quot;</span><span class="punctuation">:</span> <span class="string">&quot;512x512&quot;</span><span class="punctuation">,</span>  </span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;image/png&quot;</span>  </span><br><span class="line">    <span class="punctuation">&#125;</span>  </span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span>  </span><br><span class="line">  <span class="attr">&quot;splash_pages&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span>  </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-重新生成以及部署"><a href="#6-重新生成以及部署" class="headerlink" title="6.重新生成以及部署"></a>6.重新生成以及部署</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hexo cl</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hexo g</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-个人优化方向"><a href="#7-个人优化方向" class="headerlink" title="7.个人优化方向"></a>7.个人优化方向</h2><p>只缓存访问过的内容，只能离线访问过的内容<br>why？节省服务器小水管开销</p>
+<p>hexo目录下增加配置hexo-offline.config.cjs文件，内容如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">// offline config passed to workbox-build.  </span><br><span class="line">module.exports = &#123;  </span><br><span class="line">    // 确保不生成 source map    sourcemap: false,  </span><br><span class="line">    //离线后使用缓存  </span><br><span class="line">    // 匹配模式，确定哪些文件会被缓存(会自动缓存下列静态文件,即使没展示过)  </span><br><span class="line">    // globPatterns: [&quot;**/*.&#123;js,html,css,png,jpg,gif,svg,eot,ttf,woff&#125;&quot;],  </span><br><span class="line">    // 不再使用 globPatterns 进行预缓存  </span><br><span class="line">    // 因为我们希望只缓存展示过的页面  </span><br><span class="line">    globPatterns: [], // 明确设置为空数组，避免意外预缓存  </span><br><span class="line">  </span><br><span class="line">    // 需要缓存的文件目录  </span><br><span class="line">    globDirectory: &quot;public&quot;,  </span><br><span class="line">  </span><br><span class="line">    // Service Worker 文件生成路径  </span><br><span class="line">    swDest: &quot;public/service-worker.js&quot;,  </span><br><span class="line">  </span><br><span class="line">    // 运行时缓存策略配置  </span><br><span class="line">    runtimeCaching: [  </span><br><span class="line">        //支持自己域名下的  </span><br><span class="line">        &#123;  </span><br><span class="line">            urlPattern: /\.(?:js|html|css|png|jpg|gif|svg|eot|ttf|woff|woff2)$/,  </span><br><span class="line">            handler: &#x27;CacheFirst&#x27;,  </span><br><span class="line">  </span><br><span class="line">        &#125;,  </span><br><span class="line">        // cdn 添加其他需要运行时缓存的资源模式...  </span><br><span class="line">        &#123;  </span><br><span class="line">            urlPattern: /^https:\/\/unpkg\.com\/.*/,  </span><br><span class="line">            handler: &#x27;CacheFirst&#x27;,  </span><br><span class="line">        &#125;,  </span><br><span class="line">        &#123;  </span><br><span class="line">            urlPattern: /^https:\/\/cdnjs\.cloudflare\.com\/.*/,  </span><br><span class="line">            handler: &#x27;CacheFirst&#x27;,  </span><br><span class="line">        &#125;  </span><br><span class="line">    ],  </span><br><span class="line">  </span><br><span class="line">    // 让新激活的 Service Worker 立即接管所有现有客户端  </span><br><span class="line">    clientsClaim: true,  </span><br><span class="line">  </span><br><span class="line">    // 确保新版本的 Service Worker 安装后立即激活  </span><br><span class="line">    skipWaiting: true,  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="8-注意问题："><a href="#8-注意问题：" class="headerlink" title="8.注意问题："></a>8.注意问题：</h2><p>workbox-xxx.js每次更新都生成<br>注意只保留最新的即可，多余的可以后面删除或者先hexo cl清除掉再更新</p>
+<p>效果查看<br>F12 可以看到部分资源请求来源service worker<br><img src="https://www.brightchen.top/picgo/2025/01/10/20250110155128999.png" alt="image.png"></p>
+<script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js" async></script></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.brightchen.top">Bright Chen | 子非</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.brightchen.top/6d23098a.html">https://www.brightchen.top/6d23098a.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.brightchen.top" target="_blank">Bright Chen</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/hexo/">hexo</a><a class="post-meta__tags" href="/tags/butterfly/">butterfly</a><a class="post-meta__tags" href="/tags/cdn/">cdn</a></div><div class="post-share"><div class="social-share" data-image="https://www.brightchen.top/picgo/1737427010658.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://www.brightchen.top/picgo/wx.jpg" target="_blank"><img class="post-qr-code-img" src="https://www.brightchen.top/picgo/wx.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://www.brightchen.top/picgo/zfb.jpg" target="_blank"><img class="post-qr-code-img" src="https://www.brightchen.top/picgo/zfb.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/1d6c4e.html" title="minio对象存储和picgo图床使用"><img class="cover" src="https://www.brightchen.top/picgo/2025/01/13/20250113161631102.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">minio对象存储和picgo图床使用</div></div><div class="info-2"><div class="info-item-1">目的1.通过minio搭建自己的对象存储系统2.通过picgo实现图床功能 1.docker 部署minioMinIO 是一款高性能、分布式的开源对象存储系统，它专为云原生应用设计，旨在解决非结构化数据增长的需求。MinIO 支持 Amazon S3 API 兼容接口，这意味着它可以与现有的 S3 生态系统无缝集成，并且能够轻松地与其他服务和工具进行交互。此外，MinIO 提供了丰富的功能集，包括高可用性、数据冗余、加密等特性，适用于多种场景下的大规模数据管理. 1 部署官网地址英文：https://min.io/中文：https://www.minio.org.cn/Minio_兼容Amason的S3分布式对象存储项目，采用Golang实现 1234567891011121314mkdir -p /var/minio/datamkdir -p /var/minio/connfigdocker run \-p 8085:9000 \-p 8086:9090 \--name minio \-d --restart=always \-e...</div></div></div></a><a class="pagination-related" href="/9a6ba976.html" title="hexo+rss订阅配置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">hexo+rss订阅配置</div></div><div class="info-2"><div class="info-item-1">rss定义Atom 1.0和RSS 2.0是两种常见的内容聚合协议，它们允许用户订阅网站的更新内容，无需频繁访问网站即可获取最新信息。这两种格式虽然存在一些差异，但都旨在简化内容分发流程，提高信息获取效率。  Atom 1.0：这是一种较新的标准，由IETF（互联网工程任务组）定义。Atom 1.0规范更加严格，支持更多的元数据字段，如作者信息、分类标签等，因此能够提供更丰富的内容描述。此外，Atom 1.0还支持双向通信，即除了发布更新外，还可以接收反馈信息。 RSS 2.0：RSS（Really Simple Syndication）是一种更为广泛使用的格式，主要用于新闻和其他经常更新的信息。RSS 2.0版本较为成熟稳定，兼容性好，大多数RSS阅读器都能很好地支持这一标准。尽管它的功能相对简单，但对于大多数博客和新闻站点而言已经足够使用。1npm install hexo-generator-feed  2.配置_config.yml的plugins配置12345678910111213141516# Extensions  ## Plugins:...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/319edf64.html" title="一.hexo+butterfly+github的下载安装及部署"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-23</div><div class="info-item-2">一.hexo+butterfly+github的下载安装及部署</div></div><div class="info-2"><div class="info-item-1">1.参考地址官网文档 安装 Hexo 相当简单，只需要先安装下列应用程序即可：  Node.js (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)可以参考文章node和python多版本控制 Git  2.安装 Hexo所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。 2.1.安装改为淘宝镜像源：10s 安装 1npm config set registry https://registry.npmmirror.com 安装hexo命令工具 1npm install -g hexo-cli 下载安装hexo的Git部署插件 1npm install hexo-deployer-git 2.2 初始化项目建站 注意到自定义目录下 1npx hexo init 2.3. 编译部署及启动编译： g 生成public静态文件，启动：s启动服务-p指定端口，没有-p 默认4000端口 1npx hexo g &amp; npx hexo s -p...</div></div></div></a><a class="pagination-related" href="/9a6ba976.html" title="hexo+rss订阅配置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-07</div><div class="info-item-2">hexo+rss订阅配置</div></div><div class="info-2"><div class="info-item-1">rss定义Atom 1.0和RSS 2.0是两种常见的内容聚合协议，它们允许用户订阅网站的更新内容，无需频繁访问网站即可获取最新信息。这两种格式虽然存在一些差异，但都旨在简化内容分发流程，提高信息获取效率。  Atom 1.0：这是一种较新的标准，由IETF（互联网工程任务组）定义。Atom 1.0规范更加严格，支持更多的元数据字段，如作者信息、分类标签等，因此能够提供更丰富的内容描述。此外，Atom 1.0还支持双向通信，即除了发布更新外，还可以接收反馈信息。 RSS 2.0：RSS（Really Simple Syndication）是一种更为广泛使用的格式，主要用于新闻和其他经常更新的信息。RSS 2.0版本较为成熟稳定，兼容性好，大多数RSS阅读器都能很好地支持这一标准。尽管它的功能相对简单，但对于大多数博客和新闻站点而言已经足够使用。1npm install hexo-generator-feed  2.配置_config.yml的plugins配置12345678910111213141516# Extensions  ## Plugins:...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://www.brightchen.top/picgo/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Bright Chen | 子非</div><div class="author-info-description">有趣的技术分享小破站</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/brightChenGit"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.brightchen.top" target="_blank" title="个人博客"><i class="fa-solid fa-blog" style="color: #24292e;"></i></a><a class="social-icon" href="https://github.com/brightChenGit" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_30240219?type=blog" rel="external nofollow noreferrer" target="_blank" title="CSDN"><i class="fa-solid fa-c" style="color: #4a7dbe;"></i></a><a class="social-icon" href="tencent://message/?uin=1024347104&amp;amp;Site=Sambow&amp;amp;Menu=yes" rel="external nofollow noreferrer" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="Rss"><i class="fa-solid fa-rss" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎浏览<br/>内容完善中...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-text">1.原理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-hexo-offline"><span class="toc-text">2.hexo-offline</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-text">3.下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AE-config-butterfly-yml"><span class="toc-text">4.配置_config.butterfly.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-hexo%E7%9A%84-source%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%A2%9E%E5%8A%A0%E9%85%8D%E7%BD%AEmanifest-json-%E6%96%87%E4%BB%B6"><span class="toc-text">5.hexo的_source目录下增加配置manifest.json 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%87%8D%E6%96%B0%E7%94%9F%E6%88%90%E4%BB%A5%E5%8F%8A%E9%83%A8%E7%BD%B2"><span class="toc-text">6.重新生成以及部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%B8%AA%E4%BA%BA%E4%BC%98%E5%8C%96%E6%96%B9%E5%90%91"><span class="toc-text">7.个人优化方向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%B3%A8%E6%84%8F%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-text">8.注意问题：</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/399cdefc.html" title="nginx http3"><img src="https://www.brightchen.top/picgo/2025/01/21/1737430038998.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nginx http3"/></a><div class="content"><a class="title" href="/399cdefc.html" title="nginx http3">nginx http3</a><time datetime="2025-01-21T03:28:04.000Z" title="发表于 2025-01-21 11:28:04">2025-01-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/1d6c4e.html" title="minio对象存储和picgo图床使用"><img src="https://www.brightchen.top/picgo/2025/01/13/20250113161631102.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="minio对象存储和picgo图床使用"/></a><div class="content"><a class="title" href="/1d6c4e.html" title="minio对象存储和picgo图床使用">minio对象存储和picgo图床使用</a><time datetime="2025-01-13T08:15:05.000Z" title="发表于 2025-01-13 16:15:05">2025-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/6d23098a.html" title="hexo优化之pwa增快网络访问，减少cdn流量访问"><img src="https://www.brightchen.top/picgo/1737427010658.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo优化之pwa增快网络访问，减少cdn流量访问"/></a><div class="content"><a class="title" href="/6d23098a.html" title="hexo优化之pwa增快网络访问，减少cdn流量访问">hexo优化之pwa增快网络访问，减少cdn流量访问</a><time datetime="2025-01-10T04:00:00.000Z" title="发表于 2025-01-10 12:00:00">2025-01-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/9a6ba976.html" title="hexo+rss订阅配置">hexo+rss订阅配置</a><time datetime="2025-01-07T01:59:41.000Z" title="发表于 2025-01-07 09:59:41">2025-01-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/7ebf9c57.html" title="天翼云盘挂载到linux做为备份盘">天翼云盘挂载到linux做为备份盘</a><time datetime="2025-01-06T04:00:00.000Z" title="发表于 2025-01-06 12:00:00">2025-01-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Bright Chen | 子非</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = {"imageUploader":false,"search":false,"secureDomains":["brightchengit.github.io","brightchen.top","www.brightchen.top"],"locale":{"placeholder":"为了您能及时收到相关回复的邮件通知，请填写昵称和邮箱,且确保邮箱的正确性！"}}
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://waline.brightchen.top',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://unpkg.com/@waline/client@v3/dist/waline.css')
+        .then(() => import('https://unpkg.com/@waline/client@v3/dist/waline.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script><script src="/js/myself.js"></script><script src="/js/f12.js"></script><script defer="defer" id="ribbon" src="/js/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/canvas-nest.min.js"></script><script id="click-show-text" src="/js/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script>(() => {
+  const option = null
+  const config = {"site_uv":true,"site_pv":true,"page_pv":true,"token":"2aZjjUGlBQkX0eFpB5vVIsbaXBzhSIm+HTsnSCjTyTwZ5LQ3BfDYAfTEqU1rSCY/eLxD0F01UplIrcOOCUO3/BWThQ+YQH0UzQ2ssdbADMUrztdFg+pBYARvHkQo+/A4MxPuw0aFFJ7nl9h028pBX88CB7ekZ9UjAnggN+2goIp/znnIQVEW05f8sUgVfqEMIi0QqwdLggl7mRztQdDT8i2Zf11q1kANS1+lcWTd0Yw6y+DfvNnYWOw8/fJTunbp2K73URStq0LI1vupkrePOfRYROYF9GInyudDf0D6hiwDG/Pp0nhGXRDspdZYeWGSMIVOWRvdbF7tbD+YfBOPy57Dpl/2p2ZHbg=="}
+
+  const runTrack = () => {
+    umami.track(props => ({ ...props, url: window.location.pathname, title: GLOBAL_CONFIG_SITE.title }))
+  }
+
+  const loadUmamiJS = () => {
+    btf.getScript('https://um.brightchen.top/script.js', {
+      'data-website-id': 'c187db5a-d6a9-499e-aa87-628140e9e849',
+      'data-auto-track': 'false',
+      ...option
+    }).then(runTrack)
+  }
+
+  const getData = async (isPost) => {
+    const now = Date.now()
+    const keyUrl = isPost ? `&url=${window.location.pathname}` : ''
+    const headerList = { 'Accept': 'application/json' }
+    if (true) headerList['Authorization'] = `Bearer ${config.token}`
+    else headerList['x-umami-api-key'] = config.token
+    const res = await fetch(`https://um.brightchen.top/api/websites/c187db5a-d6a9-499e-aa87-628140e9e849/stats?startAt=0000000000&endAt=${now}${keyUrl}`, {
+      method: "GET",
+      headers: headerList
+    })
+    return await res.json()
+  }
+
+  const insertData = async () => {
+    try {
+      if (GLOBAL_CONFIG_SITE.isPost && config.page_pv) {
+        const pagePV = document.getElementById('umamiPV')
+        if (pagePV) {
+          const data = await getData(true)
+          pagePV.textContent = data.pageviews.value
+        }
+      } else {
+        const data = (config.site_uv || config.site_pv) && await getData()
+        if (config.site_uv) {
+          const siteUV = document.getElementById('umami-site-uv')
+          if (siteUV) siteUV.textContent = data.visitors.value
+        }
+        if (config.site_pv) {
+          const sitePV = document.getElementById('umami-site-pv')
+          if (sitePV) sitePV.textContent = data.pageviews.value
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load Umami Analytics:', e)
+    }
+  }
+
+  btf.addGlobalFn('pjaxComplete', runTrack, 'umami_analytics_run_track')
+  btf.addGlobalFn('pjaxComplete', insertData, 'umami_analytics_insert')
+
+  loadUmamiJS()
+  insertData()
+})()</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="search" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
