@@ -6,7 +6,7 @@
   <link href="https://www.brightchen.top/atom.xml" rel="self"/>
   
   <link href="https://www.brightchen.top/"/>
-  <updated>2025-01-21T07:26:33.066Z</updated>
+  <updated>2025-01-23T05:26:13.361Z</updated>
   <id>https://www.brightchen.top/</id>
   
   <author>
@@ -17,14 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>docker mysql备份</title>
+    <link href="https://www.brightchen.top/a3cf5de2.html"/>
+    <id>https://www.brightchen.top/a3cf5de2.html</id>
+    <published>2025-01-23T03:57:31.000Z</published>
+    <updated>2025-01-23T05:26:13.361Z</updated>
+    
+    
+    <summary type="html">docker mysql备份，定时任务生成mysql备份文件，复制mysql备份文件到天翼云盘，删除原备份文件</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="服务器" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="服务器" scheme="https://www.brightchen.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="mysql" scheme="https://www.brightchen.top/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
     <title>umami部署</title>
     <link href="https://www.brightchen.top/49489cb4.html"/>
     <id>https://www.brightchen.top/49489cb4.html</id>
     <published>2025-01-21T04:28:04.000Z</published>
-    <updated>2025-01-21T07:26:33.066Z</updated>
+    <updated>2025-01-21T07:41:26.000Z</updated>
     
     
-    <summary type="html">umami部署docker化部署，hexo butterfly配置使用umami</summary>
+    <summary type="html">umami部署docker化部署，hexo butterfly配置使用umami，避免了对 cookies 的需求,代替百度统计，google统计，代替不蒜子 busuanzi 的统计功能</summary>
     
     
     
@@ -32,6 +55,8 @@
     
     <category term="umami" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/umami/"/>
     
+    
+    <category term="hexo" scheme="https://www.brightchen.top/tags/hexo/"/>
     
     <category term="docker" scheme="https://www.brightchen.top/tags/docker/"/>
     
@@ -44,7 +69,7 @@
     <link href="https://www.brightchen.top/399cdefc.html"/>
     <id>https://www.brightchen.top/399cdefc.html</id>
     <published>2025-01-21T03:28:04.000Z</published>
-    <updated>2025-01-21T03:37:15.061Z</updated>
+    <updated>2025-01-21T03:37:14.000Z</updated>
     
     
     <summary type="html">nginx配置http3加速服务访问，提升web性能</summary>
@@ -67,7 +92,7 @@
     <link href="https://www.brightchen.top/1d6c4e.html"/>
     <id>https://www.brightchen.top/1d6c4e.html</id>
     <published>2025-01-13T08:15:05.000Z</published>
-    <updated>2025-01-21T02:27:48.560Z</updated>
+    <updated>2025-01-21T02:27:48.000Z</updated>
     
     
     <summary type="html">minio对象存储和picgo图床使用1.通过minio搭建自己的对象存储系统2.通过picgo实现图床功能</summary>
@@ -90,7 +115,7 @@
     <link href="https://www.brightchen.top/6d23098a.html"/>
     <id>https://www.brightchen.top/6d23098a.html</id>
     <published>2025-01-10T04:00:00.000Z</published>
-    <updated>2025-01-21T02:45:03.848Z</updated>
+    <updated>2025-01-21T15:12:01.000Z</updated>
     
     
     <summary type="html">hexo优化之pwa增快网络访问，减少cdn流量访问,1.通过cdn减少服务器的流量2.通过service worker拦截请求cdn，减少cdn的流量3.通过控制service worker只缓存浏览过的页面所必要的资源文件，减少整站缓存</summary>
@@ -115,7 +140,7 @@
     <link href="https://www.brightchen.top/9a6ba976.html"/>
     <id>https://www.brightchen.top/9a6ba976.html</id>
     <published>2025-01-07T01:59:41.000Z</published>
-    <updated>2025-01-21T02:02:25.053Z</updated>
+    <updated>2025-01-23T05:47:44.654Z</updated>
     
     
     <summary type="html">hexo中rss订阅配置</summary>
@@ -136,7 +161,7 @@
     <link href="https://www.brightchen.top/7ebf9c57.html"/>
     <id>https://www.brightchen.top/7ebf9c57.html</id>
     <published>2025-01-06T04:00:00.000Z</published>
-    <updated>2025-01-10T07:41:27.000Z</updated>
+    <updated>2025-01-23T05:31:25.914Z</updated>
     
     
     <summary type="html">通过alist使天翼云盘能webdav访问，通过rclone实现alist的webdav挂载在Linux上，然后通过rclone的克隆命令，执行定时任务备份数据到天翼云盘上。</summary>
@@ -157,7 +182,7 @@
     <link href="https://www.brightchen.top/319edf64.html"/>
     <id>https://www.brightchen.top/319edf64.html</id>
     <published>2024-12-23T08:55:43.000Z</published>
-    <updated>2024-12-23T09:29:15.000Z</updated>
+    <updated>2025-01-23T05:46:52.664Z</updated>
     
     
     <summary type="html">hexo+butterfly+github的下载安装及部署</summary>
@@ -182,7 +207,7 @@
     <link href="https://www.brightchen.top/60634.html"/>
     <id>https://www.brightchen.top/60634.html</id>
     <published>2024-12-17T04:00:00.000Z</published>
-    <updated>2024-12-17T04:58:30.000Z</updated>
+    <updated>2025-01-23T05:42:04.867Z</updated>
     
     
     <summary type="html">加密后请求异常和文件上传处理</summary>
@@ -207,7 +232,7 @@
     <link href="https://www.brightchen.top/36987.html"/>
     <id>https://www.brightchen.top/36987.html</id>
     <published>2024-12-16T10:00:00.000Z</published>
-    <updated>2025-01-07T02:12:35.000Z</updated>
+    <updated>2025-01-23T05:44:04.727Z</updated>
     
     
     <summary type="html">springboot实现接口请求日志自动生成(日志自动埋点)</summary>
@@ -234,7 +259,7 @@
     <link href="https://www.brightchen.top/26376.html"/>
     <id>https://www.brightchen.top/26376.html</id>
     <published>2024-12-16T10:00:00.000Z</published>
-    <updated>2024-12-17T04:58:30.000Z</updated>
+    <updated>2025-01-23T05:42:04.845Z</updated>
     
     
     <summary type="html">springboot 全局/指定接口解密（同时支持参数在body和param）</summary>
@@ -259,7 +284,7 @@
     <link href="https://www.brightchen.top/43039.html"/>
     <id>https://www.brightchen.top/43039.html</id>
     <published>2024-12-02T10:00:00.000Z</published>
-    <updated>2025-01-07T02:10:17.000Z</updated>
+    <updated>2025-01-23T05:34:26.255Z</updated>
     
     
     <summary type="html">rustdesk远程桌面使用</summary>
@@ -280,7 +305,7 @@
     <link href="https://www.brightchen.top/12826.html"/>
     <id>https://www.brightchen.top/12826.html</id>
     <published>2024-11-28T10:00:00.000Z</published>
-    <updated>2025-01-21T03:13:02.402Z</updated>
+    <updated>2025-01-21T03:13:02.000Z</updated>
     
     
     <summary type="html">mini主机服务器搭建</summary>
@@ -301,7 +326,7 @@
     <link href="https://www.brightchen.top/20077.html"/>
     <id>https://www.brightchen.top/20077.html</id>
     <published>2024-11-26T10:00:00.000Z</published>
-    <updated>2025-01-07T02:09:40.000Z</updated>
+    <updated>2025-01-23T05:36:26.347Z</updated>
     
     
     <summary type="html">在windows的多版本控制node和python</summary>
@@ -324,7 +349,7 @@
     <link href="https://www.brightchen.top/19777.html"/>
     <id>https://www.brightchen.top/19777.html</id>
     <published>2024-11-26T10:00:00.000Z</published>
-    <updated>2025-01-07T02:11:07.000Z</updated>
+    <updated>2025-01-23T05:45:31.854Z</updated>
     
     
     <summary type="html">支付宝自动续费设计</summary>
@@ -347,7 +372,7 @@
     <link href="https://www.brightchen.top/43370.html"/>
     <id>https://www.brightchen.top/43370.html</id>
     <published>2024-07-30T10:00:00.000Z</published>
-    <updated>2025-01-07T02:08:52.000Z</updated>
+    <updated>2025-01-23T05:37:03.350Z</updated>
     
     
     <summary type="html">openJdk21镜像打包制作</summary>

@@ -1,13 +1,13 @@
-/* 去除导航栏选项中底下的蓝条 */
-#nav *::after{
-    background-color: transparent!important;
-}
+/*!* 去除导航栏选项中底下的蓝条 *!*/
+/*#nav *::after{*/
+/*    background-color: transparent!important;*/
+/*}*/
 
 /* 导航栏菜单鼠标移入字体放大 */
 #nav #site-name:hover, 
 #nav .menus_item:hover, 
 #nav #search-button:hover{
-    font-size:28px;
+    font-size:1.1em;
 }
 /* 导航栏做居中处理 */
 #nav-right{
@@ -57,7 +57,7 @@
 
 #wl-edit {
     background: url("https://www.brightchen.top/picgo/2025/01/21/1737440181349.jpg") 100% 100% no-repeat;
-    background-size: contain;
+    background-size: auto 9.5em;
 }
 
 /*#waline-wrap textarea:focus {*/

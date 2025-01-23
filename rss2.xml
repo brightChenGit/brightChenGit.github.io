@@ -9,8 +9,33 @@
     <atom:link href="https://www.brightchen.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>有趣的技术分享小破站</description>
-    <pubDate>Tue, 21 Jan 2025 07:26:33 GMT</pubDate>
+    <pubDate>Thu, 23 Jan 2025 05:26:13 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>docker mysql备份</title>
+      <link>https://www.brightchen.top/a3cf5de2.html</link>
+      <guid>https://www.brightchen.top/a3cf5de2.html</guid>
+      <pubDate>Thu, 23 Jan 2025 03:57:31 GMT</pubDate>
+      
+      <description>docker mysql备份，定时任务生成mysql备份文件，复制mysql备份文件到天翼云盘，删除原备份文件</description>
+      
+      
+      
+      
+      <category domain="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      <category domain="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</category>
+      
+      
+      <category domain="https://www.brightchen.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</category>
+      
+      <category domain="https://www.brightchen.top/tags/mysql/">mysql</category>
+      
+      
+      <comments>https://www.brightchen.top/a3cf5de2.html#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>umami部署</title>
@@ -18,7 +43,7 @@
       <guid>https://www.brightchen.top/49489cb4.html</guid>
       <pubDate>Tue, 21 Jan 2025 04:28:04 GMT</pubDate>
       
-      <description>umami部署docker化部署，hexo butterfly配置使用umami</description>
+      <description>umami部署docker化部署，hexo butterfly配置使用umami，避免了对 cookies 的需求,代替百度统计，google统计，代替不蒜子 busuanzi 的统计功能</description>
       
       
       
@@ -27,6 +52,8 @@
       
       <category domain="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/umami/">umami</category>
       
+      
+      <category domain="https://www.brightchen.top/tags/hexo/">hexo</category>
       
       <category domain="https://www.brightchen.top/tags/docker/">docker</category>
       

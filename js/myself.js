@@ -88,3 +88,84 @@ if (encodedString !== 'YnJpZ2h0Y2hlbi50b3A='
     }, 5000)
 }
 
+
+// 定义一个标志变量，用于防止重复加载 Mermaid.js
+let mermaidLoaded = typeof window.mermaid !== 'undefined';
+// 检查页面中是否已经引用了 mermaid.min.js
+function isMermaidScriptPresent() {
+    const scripts = Array.from(document.querySelectorAll('script'));
+    return scripts.some(script => script.src.includes('mermaid.min.js'));
+}
+// 异步加载 Mermaid JS 文件的函数
+async function loadMermaidJS() {
+    if (mermaidLoaded || isMermaidScriptPresent()) return;
+
+    try {
+        const script = document.createElement('script');
+        script.src = 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/mermaid/11.1.0/mermaid.min.js';
+        script.onload = () => {
+            console.log('Mermaid library loaded successfully.');
+            mermaidLoaded = true;
+        };
+        script.onerror = () => {
+            throw new Error('Failed to load Mermaid library.');
+        };
+        document.head.appendChild(script);
+
+        // 等待脚本加载完成
+        await new Promise((resolve, reject) => {
+            if (mermaidLoaded) resolve();
+            else script.onload = resolve;
+            script.onerror = reject;
+        });
+    } catch (error) {
+        console.error('Failed to load Mermaid library:', error);
+        throw error;
+    }
+}
+
+// 初始化 Mermaid 图表的函数
+function initializeMermaidCharts(container,mermaidElements) {
+    // 检查是否存在 .mermaid 或 .language-mermaid 元素
+    if (mermaidElements.length > 0) {
+        try {
+            // 如果 Mermaid 尚未初始化，则先初始化它
+            if (!mermaidLoaded) {
+                mermaid.initialize({ startOnLoad: false });
+            }
+
+            // 初始化这些图表
+            mermaid.init(undefined, Array.from(mermaidElements));
+            // console.log('Mermaid charts initialized successfully.');
+        } catch (error) {
+            console.error('Failed to initialize Mermaid charts:', error);
+        }
+    }
+}
+
+
+// 处理 Mermaid 图表初始化的公共函数
+async function handleMermaidInitialization() {
+    // 使用整个 <body> 作为容器
+    const container = document.body;
+
+    // 检查新加载的内容中是否存在 .mermaid 或 .language-mermaid 元素
+    const mermaidElements = container.querySelectorAll('.mermaid, .language-mermaid');
+    if (mermaidElements.length > 0) {
+        // 动态加载 Mermaid JS 文件（如果尚未加载并且页面中没有 mermaid.min.js 的 <script> 标签）
+        await loadMermaidJS();
+
+        // 初始化页面中的 Mermaid 图表
+        initializeMermaidCharts(container,mermaidElements);
+    }
+}
+
+// 监听 pjax:complete 事件以处理新加载的内容
+document.addEventListener('pjax:complete', async () => {
+    await handleMermaidInitialization();
+});
+
+// 监听 DOMContentLoaded 事件以处理初始页面加载
+document.addEventListener('DOMContentLoaded', async () => {
+    await handleMermaidInitialization();
+});
