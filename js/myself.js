@@ -1,8 +1,4 @@
-$(document).ready(function (e) {
-    $('#footer-wrap').append('<div class="framework-info"></div>')
-    show_date_time();
-    showIcp();
-})
+
 
 var pastTimeString = "2024-12-13T18:00:00"; // 格式：YYYY-MM-DDTHH:mm:ss
 var pastTime = new Date(pastTimeString);
@@ -32,7 +28,6 @@ function calculateTimeDifference() {
     return result;
 }
 
-
 //本站运行时间，更改自己1建立站点的时间
 function show_date_time() {
     var timeDifference = calculateTimeDifference();
@@ -54,7 +49,15 @@ function  showIcp(){
         // console.log('当前页面不符合条件');
     }
     $('#footer-wrap').append('本网站由<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" rel="nofollow" style="" target="_blank"><img src="https://www.brightchen.top/img/upyun.png" alt="又拍云" align="absmiddle" width="59.4px" height="30.2px"></a>提供CDN加速/云存储服务')
-
+}
+function thisFootInit(){
+    const container = document.body;
+    const footAdd = container.querySelectorAll('.framework-info');
+    if (footAdd.length === 0) {
+        $('#footer-wrap').append('<div class="framework-info"></div>')
+        show_date_time();
+        showIcp();
+    }
 }
 // 参考https://www.tjsky.net/tutorial/1026
 //反代理问题
@@ -163,9 +166,12 @@ async function handleMermaidInitialization() {
 // 监听 pjax:complete 事件以处理新加载的内容
 document.addEventListener('pjax:complete', async () => {
     await handleMermaidInitialization();
+    thisFootInit();
 });
 
 // 监听 DOMContentLoaded 事件以处理初始页面加载
 document.addEventListener('DOMContentLoaded', async () => {
     await handleMermaidInitialization();
+    thisFootInit();
 });
+
