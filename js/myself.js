@@ -165,13 +165,13 @@ async function handleMermaidInitialization() {
 
 // 监听 pjax:complete 事件以处理新加载的内容
 document.addEventListener('pjax:complete', async () => {
-    await handleMermaidInitialization();
     thisFootInit();
+    await handleMermaidInitialization();
 });
 
 // 监听 DOMContentLoaded 事件以处理初始页面加载
 document.addEventListener('DOMContentLoaded', async () => {
-    await handleMermaidInitialization();
     thisFootInit();
+    await handleMermaidInitialization();
 });
 
