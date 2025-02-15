@@ -68,6 +68,7 @@ if (encodedString !== 'YnJpZ2h0Y2hlbi50b3A='
     &&encodedString !== 'd3d3LmJyaWdodGNoZW4udG9w'
     &&encodedString !== 'YnJpZ2h0Y2hlbmdpdC5naXRodWIuaW8='
     &&!host.startsWith('192.168.31.229')
+    &&!host.startsWith('192.168.1.223')
     && ! host.startsWith('localhost')
     && ! host.startsWith('127.0.0.1')) {
     document.body.innerHTML = [
