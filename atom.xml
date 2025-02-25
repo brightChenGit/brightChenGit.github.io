@@ -77,11 +77,11 @@
     <category term="umami" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/umami/"/>
     
     
-    <category term="hexo" scheme="https://www.brightchen.top/tags/hexo/"/>
-    
     <category term="docker" scheme="https://www.brightchen.top/tags/docker/"/>
     
     <category term="umami" scheme="https://www.brightchen.top/tags/umami/"/>
+    
+    <category term="hexo" scheme="https://www.brightchen.top/tags/hexo/"/>
     
   </entry>
   
