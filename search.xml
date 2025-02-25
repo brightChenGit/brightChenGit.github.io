@@ -78,11 +78,11 @@
       
         <tags>
             
+            <tag> hexo </tag>
+            
             <tag> docker </tag>
             
             <tag> umami </tag>
-            
-            <tag> hexo </tag>
             
         </tags>
       
@@ -254,9 +254,9 @@
             
             <tag> hexo </tag>
             
-            <tag> git </tag>
-            
             <tag> butterfly </tag>
+            
+            <tag> git </tag>
             
         </tags>
       

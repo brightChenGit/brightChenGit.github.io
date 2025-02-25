@@ -218,6 +218,34 @@
 
   
   <url>
+    <loc>https://www.brightchen.top/tags/hexo/</loc>
+    <lastmod>2025-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.brightchen.top/tags/butterfly/</loc>
+    <lastmod>2025-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.brightchen.top/tags/cdn/</loc>
+    <lastmod>2025-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.brightchen.top/tags/git/</loc>
+    <lastmod>2025-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.brightchen.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -225,28 +253,7 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/mysql/</loc>
-    <lastmod>2025-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.brightchen.top/tags/minio/</loc>
-    <lastmod>2025-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.brightchen.top/tags/node/</loc>
-    <lastmod>2025-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.brightchen.top/tags/python/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -267,28 +274,21 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/docker/</loc>
+    <loc>https://www.brightchen.top/tags/mysql/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/umami/</loc>
+    <loc>https://www.brightchen.top/tags/node/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/hexo/</loc>
-    <lastmod>2025-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.brightchen.top/tags/%E5%88%B7%E6%9C%BA/</loc>
+    <loc>https://www.brightchen.top/tags/python/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -302,14 +302,14 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/</loc>
+    <loc>https://www.brightchen.top/tags/docker/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/</loc>
+    <loc>https://www.brightchen.top/tags/umami/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -337,27 +337,34 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/git/</loc>
+    <loc>https://www.brightchen.top/tags/%E5%88%B7%E6%9C%BA/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/butterfly/</loc>
+    <loc>https://www.brightchen.top/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/tags/cdn/</loc>
+    <loc>https://www.brightchen.top/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
 
+  
+  <url>
+    <loc>https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2025-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/</loc>
@@ -367,7 +374,14 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/nginx/</loc>
+    <loc>https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/hexo/</loc>
+    <lastmod>2025-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/umami/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -388,7 +402,7 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/umami/</loc>
+    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/nginx/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -409,13 +423,6 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/</loc>
-    <lastmod>2025-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -423,7 +430,7 @@
   </url>
   
   <url>
-    <loc>https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -431,13 +438,6 @@
   
   <url>
     <loc>https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/springboot/</loc>
-    <lastmod>2025-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.brightchen.top/categories/%E5%8D%9A%E5%AE%A2/hexo/</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
