@@ -254,9 +254,9 @@
             
             <tag> hexo </tag>
             
-            <tag> git </tag>
-            
             <tag> butterfly </tag>
+            
+            <tag> git </tag>
             
         </tags>
       
@@ -414,35 +414,6 @@
     
     
     <entry>
-      <title>node和python多版本控制</title>
-      <link href="/20077.html"/>
-      <url>/20077.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h2><p>作用：为node.js多版本切换工具<br>地址：<a href="https://github.com/coreybutler/nvm-windows/releases">下载地址</a></p><h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>注意node.js的path配置（自动安装时配置，zip包需要手动配置）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NVM_HOME D:\tools\nvm</span><br><span class="line">NVM_SYMLINK D:\tools\nvm\自定义目录</span><br></pre></td></tr></table></figure><h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1.查看版本</span><br><span class="line">nvm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2.查看列表</span><br><span class="line">nvm list available</span><br><span class="line"></span><br><span class="line">3.安装版本</span><br><span class="line">nvm install 版本</span><br><span class="line"></span><br><span class="line">4.使用版本</span><br><span class="line">nvm use 版本</span><br><span class="line"></span><br><span class="line">5.卸载版本</span><br><span class="line">nvm uninstall 版本</span><br><span class="line"></span><br><span class="line">6.默认全局版本</span><br><span class="line">nvm alias default &lt;version&gt;</span><br><span class="line"></span><br><span class="line">7.查看版本</span><br><span class="line">node -V</span><br><span class="line"></span><br><span class="line">8.查看列表</span><br><span class="line">nvm list</span><br></pre></td></tr></table></figure><h2 id="pyenv-win"><a href="#pyenv-win" class="headerlink" title="pyenv-win"></a>pyenv-win</h2><p>作用：为python在win下的多版本切换工具<br>地址：<a href="https://github.com/pyenv-win/pyenv-win">下载地址</a></p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>1.需要在git上下载，然后windows 配置环境变量PATH<br>2.window注意需要先卸载已单独安装的python</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.xxx\pyenv-win-master\pyenv-win\bin</span><br><span class="line">2.xxx\pyenv-win-master\pyenv-win\shims</span><br></pre></td></tr></table></figure><p>3.无法成功切换python版本问题，导致cmd 输入python直接打开商店</p><p>（win 11特别注意）在桌面搜索找到”管理应用别名“，然后把python相关的禁用掉即可</p><p><img src="https://www.brightchen.top/picgo/20250107100940146.png" alt="image.png"></p><p>4.替换下载源<br>PYTHON_BUILD_MIRROR_URL&#x3D;<a href="https://mirrors.huaweicloud.com/python/">https://mirrors.huaweicloud.com/python/</a></p><h3 id="命令-1"><a href="#命令-1" class="headerlink" title="命令"></a>命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1.查看版本</span><br><span class="line">pyenv --version</span><br><span class="line"></span><br><span class="line">2.可安装</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">3.可使用</span><br><span class="line">pyenv versions</span><br><span class="line"></span><br><span class="line">4.当前版本</span><br><span class="line">pyenv version</span><br><span class="line"></span><br><span class="line">5.安装指定版本</span><br><span class="line">pyenv install &lt;version&gt;</span><br><span class="line"></span><br><span class="line">6.卸载指定版本</span><br><span class="line">pyenv uninstall &lt;version&gt;</span><br><span class="line"></span><br><span class="line">7.设置当前文件夹下版本</span><br><span class="line">pyenv local &lt;version&gt;</span><br><span class="line"></span><br><span class="line">8.设置全局版本</span><br><span class="line">pyenv global &lt;version&gt;</span><br><span class="line"></span><br><span class="line">9.查看版本</span><br><span class="line">python -V</span><br></pre></td></tr></table></figure><h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><p>修改pip缓存位置，默认在C盘会导致空间不足</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip cache dir</span><br><span class="line">pip config set global.cache-dir &quot;D:\pipCache&quot;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-          <category> 语言版本控制 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> node </tag>
-            
-            <tag> python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>支付宝自动续费设计</title>
       <link href="/19777.html"/>
       <url>/19777.html</url>
@@ -464,6 +435,35 @@
             <tag> 自动续费 </tag>
             
             <tag> 支付宝 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>node和python多版本控制</title>
+      <link href="/20077.html"/>
+      <url>/20077.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h2><p>作用：为node.js多版本切换工具<br>地址：<a href="https://github.com/coreybutler/nvm-windows/releases">下载地址</a></p><h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>注意node.js的path配置（自动安装时配置，zip包需要手动配置）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NVM_HOME D:\tools\nvm</span><br><span class="line">NVM_SYMLINK D:\tools\nvm\自定义目录</span><br></pre></td></tr></table></figure><h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1.查看版本</span><br><span class="line">nvm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2.查看列表</span><br><span class="line">nvm list available</span><br><span class="line"></span><br><span class="line">3.安装版本</span><br><span class="line">nvm install 版本</span><br><span class="line"></span><br><span class="line">4.使用版本</span><br><span class="line">nvm use 版本</span><br><span class="line"></span><br><span class="line">5.卸载版本</span><br><span class="line">nvm uninstall 版本</span><br><span class="line"></span><br><span class="line">6.默认全局版本</span><br><span class="line">nvm alias default &lt;version&gt;</span><br><span class="line"></span><br><span class="line">7.查看版本</span><br><span class="line">node -V</span><br><span class="line"></span><br><span class="line">8.查看列表</span><br><span class="line">nvm list</span><br></pre></td></tr></table></figure><h2 id="pyenv-win"><a href="#pyenv-win" class="headerlink" title="pyenv-win"></a>pyenv-win</h2><p>作用：为python在win下的多版本切换工具<br>地址：<a href="https://github.com/pyenv-win/pyenv-win">下载地址</a></p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>1.需要在git上下载，然后windows 配置环境变量PATH<br>2.window注意需要先卸载已单独安装的python</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.xxx\pyenv-win-master\pyenv-win\bin</span><br><span class="line">2.xxx\pyenv-win-master\pyenv-win\shims</span><br></pre></td></tr></table></figure><p>3.无法成功切换python版本问题，导致cmd 输入python直接打开商店</p><p>（win 11特别注意）在桌面搜索找到”管理应用别名“，然后把python相关的禁用掉即可</p><p><img src="https://www.brightchen.top/picgo/20250107100940146.png" alt="image.png"></p><p>4.替换下载源<br>PYTHON_BUILD_MIRROR_URL&#x3D;<a href="https://mirrors.huaweicloud.com/python/">https://mirrors.huaweicloud.com/python/</a></p><h3 id="命令-1"><a href="#命令-1" class="headerlink" title="命令"></a>命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1.查看版本</span><br><span class="line">pyenv --version</span><br><span class="line"></span><br><span class="line">2.可安装</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">3.可使用</span><br><span class="line">pyenv versions</span><br><span class="line"></span><br><span class="line">4.当前版本</span><br><span class="line">pyenv version</span><br><span class="line"></span><br><span class="line">5.安装指定版本</span><br><span class="line">pyenv install &lt;version&gt;</span><br><span class="line"></span><br><span class="line">6.卸载指定版本</span><br><span class="line">pyenv uninstall &lt;version&gt;</span><br><span class="line"></span><br><span class="line">7.设置当前文件夹下版本</span><br><span class="line">pyenv local &lt;version&gt;</span><br><span class="line"></span><br><span class="line">8.设置全局版本</span><br><span class="line">pyenv global &lt;version&gt;</span><br><span class="line"></span><br><span class="line">9.查看版本</span><br><span class="line">python -V</span><br></pre></td></tr></table></figure><h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><p>修改pip缓存位置，默认在C盘会导致空间不足</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip cache dir</span><br><span class="line">pip config set global.cache-dir &quot;D:\pipCache&quot;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> 语言版本控制 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> node </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
