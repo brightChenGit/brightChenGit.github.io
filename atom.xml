@@ -6,7 +6,7 @@
   <link href="https://www.brightchen.top/atom.xml" rel="self"/>
   
   <link href="https://www.brightchen.top/"/>
-  <updated>2025-02-17T08:39:24.000Z</updated>
+  <updated>2025-02-28T03:50:01.688Z</updated>
   <id>https://www.brightchen.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>rancher部署项目</title>
+    <link href="https://www.brightchen.top/953c9063.html"/>
+    <id>https://www.brightchen.top/953c9063.html</id>
+    <published>2025-02-28T03:30:00.000Z</published>
+    <updated>2025-02-28T03:50:01.688Z</updated>
+    
+    
+    <summary type="html">rancher部署项目，rancher项目配置，环境变量配置，映射目录配置，映射文件配置，常用部署，远程api部署</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="rancher" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/rancher/"/>
+    
+    
+    <category term="rancher" scheme="https://www.brightchen.top/tags/rancher/"/>
+    
+    <category term="k8s" scheme="https://www.brightchen.top/tags/k8s/"/>
+    
+    <category term="部署" scheme="https://www.brightchen.top/tags/%E9%83%A8%E7%BD%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>红米ax6000路由器刷机ImmortalWrt</title>
@@ -77,11 +102,11 @@
     <category term="umami" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/umami/"/>
     
     
+    <category term="hexo" scheme="https://www.brightchen.top/tags/hexo/"/>
+    
     <category term="docker" scheme="https://www.brightchen.top/tags/docker/"/>
     
     <category term="umami" scheme="https://www.brightchen.top/tags/umami/"/>
-    
-    <category term="hexo" scheme="https://www.brightchen.top/tags/hexo/"/>
     
   </entry>
   
@@ -161,7 +186,7 @@
     <link href="https://www.brightchen.top/9a6ba976.html"/>
     <id>https://www.brightchen.top/9a6ba976.html</id>
     <published>2025-01-07T01:59:41.000Z</published>
-    <updated>2025-02-25T11:38:03.201Z</updated>
+    <updated>2025-02-25T11:38:02.000Z</updated>
     
     
     <summary type="html">hexo中rss订阅配置</summary>
