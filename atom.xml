@@ -6,7 +6,7 @@
   <link href="https://www.brightchen.top/atom.xml" rel="self"/>
   
   <link href="https://www.brightchen.top/"/>
-  <updated>2025-02-28T03:50:58.936Z</updated>
+  <updated>2025-02-28T04:50:12.007Z</updated>
   <id>https://www.brightchen.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.brightchen.top/953c9063.html"/>
     <id>https://www.brightchen.top/953c9063.html</id>
     <published>2025-02-28T03:30:00.000Z</published>
-    <updated>2025-02-28T03:50:58.936Z</updated>
+    <updated>2025-02-28T04:50:12.007Z</updated>
     
     
     <summary type="html">rancher部署项目，rancher项目配置，环境变量配置，映射目录配置，映射文件配置，常用部署，远程api部署</summary>
@@ -242,9 +242,9 @@
     
     <category term="hexo" scheme="https://www.brightchen.top/tags/hexo/"/>
     
-    <category term="butterfly" scheme="https://www.brightchen.top/tags/butterfly/"/>
-    
     <category term="git" scheme="https://www.brightchen.top/tags/git/"/>
+    
+    <category term="butterfly" scheme="https://www.brightchen.top/tags/butterfly/"/>
     
   </entry>
   
@@ -368,29 +368,6 @@
   </entry>
   
   <entry>
-    <title>支付宝自动续费设计</title>
-    <link href="https://www.brightchen.top/19777.html"/>
-    <id>https://www.brightchen.top/19777.html</id>
-    <published>2024-11-26T10:00:00.000Z</published>
-    <updated>2025-01-23T05:45:31.000Z</updated>
-    
-    
-    <summary type="html">支付宝自动续费设计</summary>
-    
-    
-    
-    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    <category term="支付宝" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
-    
-    
-    <category term="自动续费" scheme="https://www.brightchen.top/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/"/>
-    
-    <category term="支付宝" scheme="https://www.brightchen.top/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
-    
-  </entry>
-  
-  <entry>
     <title>node和python多版本控制</title>
     <link href="https://www.brightchen.top/20077.html"/>
     <id>https://www.brightchen.top/20077.html</id>
@@ -410,6 +387,29 @@
     <category term="node" scheme="https://www.brightchen.top/tags/node/"/>
     
     <category term="python" scheme="https://www.brightchen.top/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>支付宝自动续费设计</title>
+    <link href="https://www.brightchen.top/19777.html"/>
+    <id>https://www.brightchen.top/19777.html</id>
+    <published>2024-11-26T10:00:00.000Z</published>
+    <updated>2025-01-23T05:45:31.000Z</updated>
+    
+    
+    <summary type="html">支付宝自动续费设计</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="支付宝" scheme="https://www.brightchen.top/categories/%E6%8A%80%E6%9C%AF/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
+    
+    
+    <category term="自动续费" scheme="https://www.brightchen.top/tags/%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%B4%B9/"/>
+    
+    <category term="支付宝" scheme="https://www.brightchen.top/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
     
   </entry>
   
